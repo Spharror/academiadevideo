@@ -179,7 +179,12 @@ async function loadPost() {
     if (!res.ok) { showError(); return; }
 
     const data = await res.json();
-    const text = atob(data.content);
+    const binary = atob(data.content.replace(/\s/g, ''));
+const bytes = new Uint8Array(binary.length);
+for (let i = 0; i < binary.length; i++) {
+  bytes[i] = binary.charCodeAt(i);
+}
+const text = new TextDecoder('utf-8').decode(bytes);
     renderPost(text, slug);
   } catch(e) {
     showError();
