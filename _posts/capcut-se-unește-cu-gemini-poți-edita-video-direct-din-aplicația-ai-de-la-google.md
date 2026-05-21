@@ -1,6 +1,5 @@
 ---
-title: "CapCut se unește cu Gemini: poți edita video direct din aplicația AI de
-  la Google"
+title: "CapCut se unește cu Gemini: poți edita video in aplicația AI de la Google"
 date: 2026-05-21T21:06:00.000+03:00
 cover: images/img_9ba719c31c76-1.jpeg
 description: CapCut a anunțat astăzi un parteneriat cu Gemini, aplicația AI de
