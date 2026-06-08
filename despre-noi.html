@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html class="dark" lang="ro">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Despre Noi | Academia de Video</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "tertiary-fixed-dim": "#c2c7cf","tertiary": "#fffdff","secondary-container": "#454749",
+                "on-primary-container": "#007255","on-tertiary": "#2c3137","on-primary-fixed": "#002116",
+                "on-surface-variant": "#b9cbc1","outline": "#83958c","surface-container-low": "#191c1e",
+                "on-primary-fixed-variant": "#00513c","tertiary-fixed": "#dee3eb","on-tertiary-fixed-variant": "#42474e",
+                "error-container": "#93000a","on-primary": "#003828","inverse-primary": "#006c50",
+                "surface-container": "#1d2022","surface-bright": "#37393c","on-tertiary-fixed": "#171c22",
+                "on-error-container": "#ffdad6","surface": "#111416","on-error": "#690005",
+                "on-surface": "#e1e2e5","primary-fixed": "#36ffc4","tertiary-container": "#dde1ea",
+                "error": "#ffb4ab","secondary-fixed-dim": "#c6c6c9","on-secondary": "#2f3133",
+                "on-secondary-fixed-variant": "#454749","surface-container-high": "#272a2c",
+                "on-secondary-container": "#b4b5b7","secondary-fixed": "#e2e2e5","surface-dim": "#111416",
+                "surface-container-lowest": "#0c0f11","outline-variant": "#3a4a43",
+                "surface-container-highest": "#323537","on-background": "#e1e2e5",
+                "primary-fixed-dim": "#00e1ab","surface-tint": "#00e1ab","on-secondary-fixed": "#1a1c1e",
+                "secondary": "#c6c6c9","background": "#111416","primary-container": "#00ffc2",
+                "primary": "#fbfffa","surface-variant": "#323537","inverse-surface": "#e1e2e5",
+                "on-tertiary-container": "#5f646b","inverse-on-surface": "#2e3133"
+            },
+            fontFamily: { "headline": ["Space Grotesk"], "body": ["Manrope"], "label": ["Manrope"] },
+            borderRadius: {"DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem"},
+        },
+    },
+}
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+    .nav-link {
+        font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; font-weight: 700;
+        letter-spacing: 0.025em; text-transform: uppercase; color: rgba(251,255,250,0.6);
+        text-decoration: none; transition: color 0.3s;
+    }
+    .nav-link:hover { color: #00e1ab; }
+    .nav-link.active { color: #00e1ab; }
+    .grid-bg {
+        background-image: linear-gradient(rgba(0,225,171,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,225,171,0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+    .timeline-line { border-left: 2px solid rgba(0,225,171,0.2); }
+    .timeline-dot { width: 12px; height: 12px; background: #00e1ab; border-radius: 50%; margin-left: -7px; }
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.8s ease forwards; }
+    .fade-up-delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .fade-up-delay-2 { animation-delay: 0.3s; opacity: 0; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.96) translateY(20px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: scale(1) translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+</style>
+
+<!-- ─── CONSENT-GATED TRACKING ───
+     Pixels do NOT fire on load. They are loaded only after the user
+     grants "marketing" consent via the cookie banner below. -->
+<script>
+window.AdV_Consent = { analytics: false, marketing: false };
+
+// ── Marketing: Meta Pixel + TikTok Pixel ──
+function loadMarketingPixels() {
+    if (window.AdV_marketingLoaded) return;
+    window.AdV_marketingLoaded = true;
+
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '973248965246898');
+    fbq('track', 'PageView');
+
+    // TikTok Pixel
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D80VQNRC77UCEH8TB2I0');
+      ttq.page();
+    }(window, document, 'ttq');
+
+    // Google Ads (gtag.js)
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-971316963';
+    document.head.appendChild(gtagScript);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'AW-971316963');
+
+    window.AdV_Consent.marketing = true;
+}
+
+// ── Analytics: placeholder for future trackers (e.g. Google Analytics) ──
+function loadAnalytics() {
+    if (window.AdV_analyticsLoaded) return;
+    window.AdV_analyticsLoaded = true;
+    window.AdV_Consent.analytics = true;
+    // No analytics tools wired yet — add Google Analytics etc. here when needed.
+}
+
+// Safe no-op stubs so any fbq()/ttq() calls elsewhere don't error before consent
+window.fbq = window.fbq || function(){ (window.fbq.q = window.fbq.q || []).push(arguments); };
+window.ttq = window.ttq || { track: function(){}, page: function(){} };
+
+// Apply stored consent immediately on load (before banner shows)
+(function applyStoredConsent() {
+    try {
+        var saved = JSON.parse(localStorage.getItem('adv_cookie_consent') || 'null');
+        if (saved) {
+            if (saved.marketing) loadMarketingPixels();
+            if (saved.analytics) loadAnalytics();
+        }
+    } catch (e) {}
+})();
+</script>
+<!-- End consent-gated tracking -->
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 bg-[#111416]/80 backdrop-blur-xl border-b border-outline-variant/10">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <a href="/index.html" class="text-2xl font-bold tracking-tighter text-[#fbfffa] font-headline" style="text-decoration:none;">Academia de Video</a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="nav-link" href="/index.html">HOME</a>
+            <a class="nav-link active" href="/despre-noi.html">DESPRE NOI</a>
+            <a class="nav-link" href="/cursuri.html">CURSURI</a>
+            <a class="nav-link" href="/blog.html">BLOG</a>
+        </div>
+        <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
+           href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=despre_noi"
+           onclick="fbq('track','InitiateCheckout',{content_name:'navbar_cta'}); ttq.track('InitiateCheckout',{content_name:'navbar_cta'});">
+            VREAU 7 ZILE GRATIS
+        </a>
+        <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+    <div id="mobile-menu" class="flex-col bg-[#111416] px-8 py-6 gap-6 border-t border-outline-variant/10">
+        <a class="nav-link text-base" href="/index.html">HOME</a>
+        <a class="nav-link active text-base" href="/despre-noi.html">DESPRE NOI</a>
+        <a class="nav-link text-base" href="/cursuri.html">CURSURI</a>
+        <a class="nav-link text-base" href="/blog.html">BLOG</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-[60vh] flex items-end pt-20 overflow-hidden grid-bg">
+    <div class="absolute top-1/2 left-1/3 w-[500px] h-[300px] rounded-full opacity-8 blur-[100px]" style="background: radial-gradient(ellipse, #00e1ab 0%, transparent 70%);"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full pb-20 pt-32">
+        <span class="fade-up inline-block px-3 py-1 bg-secondary-container text-[#00e1ab] rounded-full text-[10px] font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
+            ✦ Povestea noastră
+        </span>
+        <h1 class="fade-up fade-up-delay-1 text-6xl md:text-8xl font-headline font-bold leading-[0.88] tracking-tighter text-primary mb-6">
+            DESPRE<br><span class="text-primary-fixed-dim italic">NOI</span>
+        </h1>
+        <p class="fade-up fade-up-delay-2 text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+            Doi frați, 10 ani de video, 3 continente — și un viitor construit cu inteligență artificială.
+        </p>
+    </div>
+</section>
+
+<!-- MAGAZINE STORY -->
+<section class="py-24 bg-surface overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 md:px-8">
+
+        <!-- Intro / dropcap -->
+        <div class="max-w-3xl mx-auto mb-20">
+            <p class="text-[#00e1ab] font-headline font-bold text-sm tracking-[0.3em] uppercase mb-8 text-center">Povestea noastră</p>
+            <p class="story-text text-xl md:text-2xl text-on-surface leading-relaxed first-letter:text-7xl first-letter:font-headline first-letter:font-bold first-letter:text-primary-fixed-dim first-letter:float-left first-letter:mr-4 first-letter:mt-2 first-letter:leading-[0.8]">
+                Noi suntem Andrei și Alex. Încă din copilărie am fost pasionați de filmele pe care le vedeam la televizor. Apoi în 2015, inspirați de valul YouTube care prindea amploare și în România, am început să facem clipuri scurte prin care să exersăm efecte speciale din filmele care ne plăceau.
+            </p>
+        </div>
+
+        <!-- Hero image full-width -->
+        <figure class="reveal-scale mb-20 -mx-2 md:-mx-12">
+            <div class="rounded-2xl overflow-hidden border border-outline-variant/20">
+                <img src="images/andrei_alex.jpeg" alt="Andrei și Alex la Internet Computer" class="w-full h-auto object-cover" loading="lazy">
+            </div>
+            <figcaption class="text-center text-on-surface-variant/60 text-sm mt-4 font-headline tracking-wide uppercase">Andrei & Alex</figcaption>
+        </figure>
+
+        <!-- Two-column text + portrait -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center mb-20">
+            <div class="reveal story-text text-lg text-on-surface-variant leading-relaxed space-y-6 order-2 md:order-1">
+                <p>Din aproape în aproape am început să filmăm videoclipuri muzicale pentru artiști la început de drum și să câștigăm astfel primii bani.</p>
+                <p>Apoi am început să filmăm pentru firme care aveau nevoie de clipuri de prezentare pentru sediile lor.</p>
+                <p class="text-primary font-medium">Din pasiune ne-am înscris la Facultatea de Film unde am fost admiși primii pe listă, loc în care am studiat arta cinematografiei.</p>
+            </div>
+            <figure class="reveal-scale order-1 md:order-2">
+                <div class="rounded-2xl overflow-hidden border border-outline-variant/20 aspect-[3/4]">
+                    <img src="images/dubai.jpeg" alt="Binance Blockchain Week" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="text-on-surface-variant/60 text-sm mt-3 font-headline tracking-wide uppercase">Binance Blockchain Week</figcaption>
+            </figure>
+        </div>
+
+        <!-- Pull quote -->
+        <div class="reveal max-w-3xl mx-auto my-24 text-center">
+            <div class="text-primary-fixed-dim/20 font-headline font-bold text-7xl leading-none mb-2 select-none">"</div>
+            <p class="story-text text-2xl md:text-3xl font-headline font-bold text-primary leading-snug -mt-8">
+                Am trecut prin întreaga istorie a acestui domeniu îndrumați de profesori renumiți, iar apoi ne-am întors pe drumul nostru în lumea reală, în <span class="text-primary-fixed-dim">anul 2019</span>.
+            </p>
+        </div>
+
+        <!-- Three portrait collage -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-20">
+            <figure class="reveal-scale">
+                <div class="rounded-2xl overflow-hidden border border-outline-variant/20 aspect-[3/4]">
+                    <img src="images/chainfusion_bangkok.jpeg" alt="Chain Fusion Hub Bangkok" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="text-on-surface-variant/60 text-xs mt-3 font-headline tracking-wide uppercase">Chain Fusion Hub · Bangkok</figcaption>
+            </figure>
+            <figure class="reveal-scale reveal-delay-1">
+                <div class="rounded-2xl overflow-hidden border border-outline-variant/20 aspect-[3/4]">
+                    <img src="images/bangkok.jpeg" alt="Hacker Zone Bangkok" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="text-on-surface-variant/60 text-xs mt-3 font-headline tracking-wide uppercase">Hacker Zone · Bangkok</figcaption>
+            </figure>
+            <figure class="reveal-scale reveal-delay-2 col-span-2 md:col-span-1">
+                <div class="rounded-2xl overflow-hidden border border-outline-variant/20 aspect-[3/4]">
+                    <img src="images/sanfrancisco.jpeg" alt="World Computer Day Davos" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                <figcaption class="text-on-surface-variant/60 text-xs mt-3 font-headline tracking-wide uppercase">World Computer Day · Davos</figcaption>
+            </figure>
+        </div>
+
+        <!-- Closing narrative -->
+        <div class="reveal max-w-3xl mx-auto story-text text-lg md:text-xl text-on-surface-variant leading-relaxed space-y-6 mb-16">
+            <p>Înarmați cu noi cunoștințe am continuat să ne facem treaba exemplar, iar astfel am ajuns să avem primii clienți pe plan internațional. Mai întâi în Europa, apoi în Asia, iar în cele din urmă am ajuns în <span class="text-primary font-medium">Denver, Colorado</span> și <span class="text-primary font-medium">San Francisco, California</span>.</p>
+            <p>Și iată cum, doi copii din România care au îndrăznit să viseze, au reușit să viziteze atâtea locuri frumoase și să cunoască oameni care i-au plătit să filmeze videoclipurile de care ei aveau nevoie în multe colțuri ale lumii. Totul pornind de la ce părea a fi o simplă joacă.</p>
+        </div>
+
+        <!-- Final statement -->
+        <div class="reveal max-w-3xl mx-auto text-center mb-20">
+            <p class="text-2xl md:text-3xl font-headline font-bold text-primary leading-snug">
+                Noi suntem dovada că prin <span class="text-primary-fixed-dim">puțin talent</span> și <span class="text-primary-fixed-dim">multă muncă</span> poți ajunge mai departe decât îți puteai imagina.
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="reveal text-center">
+            <a class="bg-primary-fixed text-on-primary-fixed px-12 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase inline-block"
+               href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=despre_noi_story"
+               onclick="fbq('track','InitiateCheckout',{content_name:'despre_noi_cta'}); ttq.track('InitiateCheckout',{content_name:'despre_noi_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+                Învață de la noi — 7 zile gratuit
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#191c1e]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 w-full gap-12 border-t border-[#3a4a43]/20">
+            <div class="max-w-sm">
+                <div class="text-xl font-bold text-[#fbfffa] font-headline mb-4 uppercase tracking-tighter">Academia de Video</div>
+                <p class="text-[#fbfffa]/40 font-body text-sm leading-relaxed mb-6">Educație practică de video și AI în limba română.</p>
+            </div>
+            <div class="flex gap-16">
+                <div>
+                    <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Pagini</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="/index.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Home</a>
+                        <a href="/despre-noi.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Despre noi</a>
+                        <a href="/cursuri.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Cursuri</a>
+                        <a href="/blog.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-auto">
+                <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Newsletter</h4>
+                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește tips & tricks AI video săptămânale.</p>
+                <div class="flex gap-2">
+                    <input class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full md:w-64" placeholder="Email-ul tău" type="email">
+                    <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="px-12 py-8 border-t border-[#3a4a43]/10 text-center md:text-left">
+            <span class="text-[#fbfffa]/40 text-xs uppercase tracking-widest">© 2026 Academia de Video. Toate drepturile rezervate.</span>
+        </div>
+    </div>
+</footer>
+<!-- ═══════════ COOKIE CONSENT ═══════════ -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[100] hidden">
+    <div class="max-w-5xl mx-auto m-4 rounded-2xl border border-outline-variant/30 bg-surface-container/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-8">
+            <div class="flex flex-col md:flex-row md:items-center gap-6">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-2xl text-primary-fixed-dim">cookie</span>
+                        <h3 class="font-headline font-bold text-primary text-lg">Folosim cookie-uri</h3>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        Folosim cookie-uri pentru a îmbunătăți experiența ta și pentru a măsura eficiența reclamelor noastre. Poți accepta tot, respinge tot, sau alege exact ce permiți.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <button onclick="cookieRejectAll()" class="px-6 py-3 rounded-md border border-outline-variant text-primary font-bold text-sm hover:bg-surface-container-high transition-colors whitespace-nowrap">
+                        Respinge tot
+                    </button>
+                    <button onclick="cookieOpenSettings()" class="px-6 py-3 rounded-md border border-outline-variant text-primary font-bold text-sm hover:bg-surface-container-high transition-colors whitespace-nowrap">
+                        Personalizează
+                    </button>
+                    <button onclick="cookieAcceptAll()" class="px-6 py-3 rounded-md bg-primary-fixed text-on-primary-fixed font-bold text-sm hover:bg-primary-fixed-dim transition-colors whitespace-nowrap">
+                        Accept tot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings modal -->
+<div id="cookie-modal" class="fixed inset-0 z-[101] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-2xl border border-outline-variant/30 bg-surface-container overflow-hidden max-h-[90vh] overflow-y-auto">
+        <div class="p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-headline font-bold text-primary text-xl">Preferințe cookie-uri</h3>
+                <button onclick="cookieCloseSettings()" class="text-on-surface-variant hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Essential -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Esențiale</h4>
+                        <span class="text-primary-fixed-dim text-xs font-bold uppercase tracking-wider bg-primary-fixed/10 px-3 py-1 rounded-full border border-primary-fixed/20">Mereu active</span>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Necesare pentru funcționarea site-ului și pentru a reține preferințele tale. Nu pot fi dezactivate.</p>
+                </div>
+
+                <!-- Analytics -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Analiză</h4>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="toggle-analytics">
+                            <span class="cookie-slider"></span>
+                        </label>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Ne ajută să înțelegem cum este folosit site-ul, ca să îl îmbunătățim.</p>
+                </div>
+
+                <!-- Marketing -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Marketing</h4>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="toggle-marketing">
+                            <span class="cookie-slider"></span>
+                        </label>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Permit Meta (Facebook/Instagram) și TikTok să măsoare eficiența reclamelor noastre.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-8">
+                <button onclick="cookieSaveSettings()" class="flex-1 px-6 py-3 rounded-md bg-primary-fixed text-on-primary-fixed font-bold text-sm hover:bg-primary-fixed-dim transition-colors">
+                    Salvează preferințele
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating "Cookie settings" reopen button -->
+<button id="cookie-reopen" onclick="cookieOpenSettings()" class="fixed bottom-4 left-4 z-[99] hidden w-12 h-12 rounded-full bg-surface-container border border-outline-variant/30 items-center justify-center text-primary-fixed-dim hover:bg-surface-container-high transition-colors shadow-lg" title="Setări cookie-uri">
+    <span class="material-symbols-outlined">cookie</span>
+</button>
+
+<style>
+    .cookie-switch { position: relative; display: inline-block; width: 48px; height: 26px; flex-shrink: 0; }
+    .cookie-switch input { opacity: 0; width: 0; height: 0; }
+    .cookie-slider {
+        position: absolute; cursor: pointer; inset: 0;
+        background: #3a4a43; border-radius: 999px; transition: 0.3s;
+    }
+    .cookie-slider:before {
+        content: ""; position: absolute; height: 20px; width: 20px;
+        left: 3px; bottom: 3px; background: #fbfffa; border-radius: 50%; transition: 0.3s;
+    }
+    .cookie-switch input:checked + .cookie-slider { background: #00e1ab; }
+    .cookie-switch input:checked + .cookie-slider:before { transform: translateX(22px); }
+</style>
+
+<script>
+(function() {
+    const STORAGE_KEY = 'adv_cookie_consent';
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    const reopenBtn = document.getElementById('cookie-reopen');
+
+    function getConsent() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); }
+        catch (e) { return null; }
+    }
+    function saveConsent(consent) {
+        consent.timestamp = new Date().toISOString();
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(consent)); } catch (e) {}
+        applyConsent(consent);
+        hideBanner();
+        reopenBtn.classList.remove('hidden');
+        reopenBtn.classList.add('flex');
+    }
+    function applyConsent(consent) {
+        if (consent.marketing && typeof loadMarketingPixels === 'function') loadMarketingPixels();
+        if (consent.analytics && typeof loadAnalytics === 'function') loadAnalytics();
+    }
+    function showBanner() { banner.classList.remove('hidden'); }
+    function hideBanner() { banner.classList.add('hidden'); }
+
+    // Global handlers (referenced by onclick)
+    window.cookieAcceptAll = function() {
+        saveConsent({ essential: true, analytics: true, marketing: true });
+    };
+    window.cookieRejectAll = function() {
+        saveConsent({ essential: true, analytics: false, marketing: false });
+    };
+    window.cookieOpenSettings = function() {
+        const c = getConsent();
+        document.getElementById('toggle-analytics').checked = c ? !!c.analytics : false;
+        document.getElementById('toggle-marketing').checked = c ? !!c.marketing : false;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    };
+    window.cookieCloseSettings = function() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    };
+    window.cookieSaveSettings = function() {
+        saveConsent({
+            essential: true,
+            analytics: document.getElementById('toggle-analytics').checked,
+            marketing: document.getElementById('toggle-marketing').checked
+        });
+        window.cookieCloseSettings();
+    };
+
+    // Close modal on backdrop click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) window.cookieCloseSettings();
+    });
+
+    // On load: show banner if no decision yet, else show reopen button
+    const existing = getConsent();
+    if (!existing) {
+        showBanner();
+    } else {
+        reopenBtn.classList.remove('hidden');
+        reopenBtn.classList.add('flex');
+    }
+})();
+</script>
+<!-- ═══════════ END COOKIE CONSENT ═══════════ -->
+
+<script>
+(function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal, .reveal-scale').forEach(el => el.classList.add('is-visible'));
+        return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+})();
+</script>
+
+</body>
+</html>
