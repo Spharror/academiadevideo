@@ -289,83 +289,43 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
 </nav>
 
 <!-- HERO SECTION -->
-<section class="relative min-h-screen flex items-center pt-20 overflow-hidden grid-bg">
-    <!-- Background image (right side, transparent PNG/WebP) -->
-    <div class="hero-bg-image absolute inset-y-0 right-0 w-full md:w-[75%] pointer-events-none z-0">
-        <img src="images/hero_bg.webp" alt="" class="absolute inset-0 w-full h-full object-cover object-right opacity-60 md:opacity-80" loading="eager" decoding="async">
-        <!-- Fade overlay: dark on left → transparent on right, so text stays readable -->
-        <div class="absolute inset-0" style="background: linear-gradient(90deg, #111416 0%, rgba(17,20,22,0.85) 25%, rgba(17,20,22,0.3) 60%, rgba(17,20,22,0) 100%);"></div>
-        <!-- Vignette on bottom -->
-        <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(17,20,22,0) 60%, rgba(17,20,22,0.6) 100%);"></div>
-    </div>
-
+<section class="relative pt-32 pb-20 overflow-hidden grid-bg">
     <!-- Ambient glow -->
     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-10 blur-[120px] z-0" style="background: radial-gradient(ellipse, #00e1ab 0%, transparent 70%);"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full py-24">
-        <div class="max-w-4xl">
-            <span class="fade-up inline-block px-4 py-2 bg-secondary-container text-[#00e1ab] rounded-full text-sm font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
-                Fără cameră. Fără echipă. Fără experiență.
-            </span>
-            <h1 class="fade-up fade-up-delay-1 text-4xl md:text-6xl font-headline font-bold leading-[1.05] tracking-tighter text-primary mb-8 glow-text">
-                Creează singur <span class="text-primary-fixed-dim">reclame și conținut profesional</span> - fără agenție și fără bugete mari
+    <div class="relative z-10 max-w-6xl mx-auto px-8 w-full">
+        <!-- Headline + subheadline (centered, above the video) -->
+        <div class="text-center max-w-4xl mx-auto mb-12">
+            <h1 class="fade-up text-4xl md:text-6xl font-headline font-bold leading-[1.05] tracking-tighter text-primary mb-6 glow-text">
+                Creează singur clipuri profesionale — <span class="text-primary-fixed-dim">fără agenție și fără bugete mari</span>
             </h1>
-            <p class="fade-up fade-up-delay-2 text-lg md:text-xl text-on-surface-variant max-w-2xl mb-10 leading-relaxed font-light">
-                Îți arătăm exact cum să generezi cu AI clipuri pe care le poți folosi mâine: reclame pentru produsele tale, postări care vând pe Instagram și TikTok, poze de produs profesionale și campanii complete de marketing — chiar dacă nu ai făcut niciodată un clip în viața ta.
+            <p class="fade-up fade-up-delay-1 text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-light">
+                Învață să generezi reclame, postări și conținut video cu AI — direct de pe laptopul tău.
             </p>
-            <div class="fade-up fade-up-delay-3 flex flex-col sm:flex-row gap-4">
-                <a class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-colors inline-block text-center"
-                   href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=hero"
-                   onclick="fbq('track', 'InitiateCheckout', {content_name: 'hero_cta'}); ttq.track('InitiateCheckout', {content_name: 'hero_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
-                    Intră 7 zile gratuit
-                </a>
-                <a class="border border-outline-variant text-primary px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-surface-container-high transition-colors inline-block text-center"
-                   href="#ai-showcase">
-                    Vezi exemple AI ↓
-                </a>
+        </div>
+
+        <!-- Large hero video -->
+        <div class="fade-up fade-up-delay-2 relative rounded-2xl overflow-hidden border border-outline-variant/30 shadow-2xl mb-12" style="box-shadow: 0 30px 80px rgba(0,225,171,0.12);">
+            <div class="aspect-video bg-surface-container-lowest">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/RAtYusfJYuo?si=1DGsGTD-s9PBI8-s&controls=0&modestbranding=1&rel=0" title="Academia de Video — Intro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="fade-up fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center">
+            <a class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-colors inline-block text-center"
+               href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=hero"
+               onclick="fbq('track', 'InitiateCheckout', {content_name: 'hero_cta'}); ttq.track('InitiateCheckout', {content_name: 'hero_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+                Intră 7 zile gratuit
+            </a>
+            <a class="border border-outline-variant text-primary px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-surface-container-high transition-colors inline-block text-center"
+               href="#ai-showcase">
+                Vezi exemple AI ↓
+            </a>
         </div>
     </div>
 </section>
 
-
-<!-- WHAT IS AI VIDEO -->
-<section class="py-28 bg-surface">
-    <div class="max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div class="reveal">
-                <span class="text-[#00e1ab] font-headline font-bold text-base tracking-[0.3em] uppercase mb-4 block">CE SE ÎNTÂMPLĂ ACUM — ȘI DE CE TE COSTĂ</span>
-                <h2 class="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tight mb-8 leading-tight">
-                    În timp ce tu nu postezi,<br><span class="text-primary-fixed-dim">concurenții tăi îți iau clienții.</span>
-                </h2>
-                <div class="space-y-6 text-on-surface-variant leading-relaxed text-lg">
-                    <p>Acum câțiva ani, o reclamă video profesională costa mii de euro și săptămâni de producție. Doar brandurile mari și le permiteau.</p>
-                    <p>Azi, cu un laptop și uneltele potrivite poți produce același tip de conținut — în câteva ore. <strong class="text-primary">Unii au aflat deja. Și postează în fiecare zi. Tu vrei să fii unul dintre ei?</strong></p>
-                    <p>Cei care învață asta acum vor fi cei care vând mâine. <strong class="text-primary">Cei care amână vor cumpăra de la ei.</strong></p>
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <!-- Stat cards -->
-                <div class="reveal-scale bg-surface-container-low rounded-xl p-8 border border-outline-variant/20 hover:border-primary-fixed/30 transition-colors">
-                    <div class="text-5xl font-headline font-bold text-primary-fixed-dim mb-2"><span class="counter" data-count="80" data-suffix="%">0%</span></div>
-                    <div class="text-on-surface-variant text-sm leading-relaxed">din conținutul online va fi AI — cei care știu să îl creeze vor domina feedul. Ceilalți vor dispărea.</div>
-                </div>
-                <div class="reveal-scale reveal-delay-1 bg-surface-container-low rounded-xl p-8 border border-outline-variant/20 hover:border-primary-fixed/30 transition-colors">
-                    <div class="text-5xl font-headline font-bold text-primary-fixed-dim mb-2"><span class="counter" data-count="10" data-suffix="x">0x</span></div>
-                    <div class="text-on-surface-variant text-sm leading-relaxed">mai rapid — în timp ce alții filmează zile întregi, tu livrezi un clip gata de postat în 30 de minute.</div>
-                </div>
-                <div class="reveal-scale reveal-delay-2 bg-surface-container-low rounded-xl p-8 border border-outline-variant/20 hover:border-primary-fixed/30 transition-colors">
-                    <div class="text-5xl font-headline font-bold text-primary-fixed-dim mb-2"><span class="counter" data-count="0" data-start="1000" data-suffix=" €">1000 €</span></div>
-                    <div class="text-on-surface-variant text-sm leading-relaxed">echipament necesar — nicio cameră, niciun studio, niciun editor angajat. Doar laptopul tău.</div>
-                </div>
-                <div class="reveal-scale reveal-delay-3 bg-surface-container-low rounded-xl p-8 border border-outline-variant/20 hover:border-primary-fixed/30 transition-colors">
-                    <div class="text-5xl font-headline font-bold text-primary-fixed-dim mb-2"><span class="counter" data-mode="infinity" data-suffix="" data-count="100">0</span></div>
-                    <div class="text-on-surface-variant text-sm leading-relaxed">Conținut infinit — reclame, postări, campanii, prezentări. Fără să te blochezi vreodată în "nu am ce posta."</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- AI VIDEO SHOWCASE -->
 <section class="py-28 bg-surface-container-lowest grid-bg" id="ai-showcase">
@@ -436,113 +396,6 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                 VREAU 7 ZILE GRATIS
             </a>
         </div>
-    </div>
-</section>
-
-<!-- PENTRU CINE ESTE -->
-<section class="py-28 bg-surface">
-    <div class="max-w-7xl mx-auto px-8">
-
-        <!-- Header -->
-        <div class="reveal text-center mb-16">
-            <span class="inline-block px-4 py-2 bg-secondary-container text-[#00e1ab] rounded-full text-sm font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
-                PENTRU CINE ESTE ACADEMIA DE VIDEO
-            </span>
-            <h2 class="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tight leading-tight">
-                Dacă te regăsești aici,<br><span class="text-primary-fixed-dim">ești exact unde trebuie să fii.</span>
-            </h2>
-        </div>
-
-        <!-- Two cards side by side -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-
-            <!-- Card 1: Antreprenorul -->
-            <div class="reveal-scale relative group rounded-2xl overflow-hidden border border-outline-variant/20 hover:border-primary-fixed/40 transition-all duration-500 bg-surface-container-low">
-                <!-- Top accent bar -->
-                <div class="h-1 w-full bg-gradient-to-r from-primary-fixed-dim to-transparent"></div>
-                <div class="p-10">
-                    <!-- Icon + label -->
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-14 h-14 rounded-xl bg-primary-fixed/10 border border-primary-fixed/20 flex items-center justify-center group-hover:bg-primary-fixed/20 transition-colors">
-                            <span class="material-symbols-outlined text-3xl text-primary-fixed-dim">storefront</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-headline font-bold text-primary">Antreprenorul</h3>
-                        </div>
-                    </div>
-
-                    <!-- Hook -->
-                    <p class="text-xl font-headline font-bold text-primary mb-6 leading-snug">Ai o afacere și vrei clienți noi</p>
-
-                    <!-- Body -->
-                    <div class="space-y-4 text-on-surface-variant leading-relaxed text-base mb-8">
-                        <p>Vinzi un produs sau serviciu, dar reclamele sunt scumpe și nu ai timp să înveți editare complexă.</p>
-                        <p>Vrei să poți crea singur o reclamă profesională pentru produsul tău — rapid, ieftin, și care arată cum îți dorești.</p>
-                    </div>
-
-                    <!-- Outcome -->
-                    <div class="border-t border-outline-variant/20 pt-6">
-                        <p class="text-primary font-bold text-base leading-relaxed">
-                            <span class="text-primary-fixed-dim">Academia de Video</span> îți dă exact asta — în prima săptămână.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2: Freelancerul -->
-            <div class="reveal-scale reveal-delay-1 relative group rounded-2xl overflow-hidden border border-outline-variant/20 hover:border-primary-fixed/40 transition-all duration-500 bg-surface-container-low">
-                <!-- Top accent bar -->
-                <div class="h-1 w-full bg-gradient-to-r from-primary-fixed-dim to-transparent"></div>
-                <div class="p-10">
-                    <!-- Icon + label -->
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-14 h-14 rounded-xl bg-primary-fixed/10 border border-primary-fixed/20 flex items-center justify-center group-hover:bg-primary-fixed/20 transition-colors">
-                            <span class="material-symbols-outlined text-3xl text-primary-fixed-dim">trending_up</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-headline font-bold text-primary">Freelancerul</h3>
-                        </div>
-                    </div>
-
-                    <!-- Hook -->
-                    <p class="text-xl font-headline font-bold text-primary mb-6 leading-snug">Vrei să câștigi bani din video</p>
-
-                    <!-- Body -->
-                    <div class="space-y-4 text-on-surface-variant leading-relaxed text-base mb-8">
-                        <p>Poate ai deja clienți. Poate vrei să îți începi o agenție. Sau poate vrei să oferi un serviciu nou care să vină în ajutorul clienților tăi.</p>
-                        <p>Serviciile de video AI sunt cerute, puțini știu să le facă, și se plătesc bine. <strong class="text-primary">Un singur client îți acoperă abonamentul pentru un an întreg.</strong></p>
-                    </div>
-
-                    <!-- Outcome -->
-                    <div class="border-t border-outline-variant/20 pt-6">
-                        <p class="text-primary font-bold text-base leading-relaxed">
-                            <span class="text-primary-fixed-dim">Academia de Video</span> îți dă skillul. Tu îți faci prețul.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Divider + Excludere -->
-        <div class="border-t border-outline-variant/20 pt-14 max-w-2xl mx-auto text-center">
-            <p class="text-on-surface-variant text-sm font-bold uppercase tracking-[0.2em] mb-6 font-headline">Academia de Video <span class="text-primary">nu</span> e pentru tine dacă:</p>
-            <ul class="space-y-4 text-left inline-block">
-                <li class="flex items-start gap-3 text-on-surface-variant">
-                    <span class="text-outline mt-1 shrink-0">✕</span>
-                    <span>Nu vrei să faci lucrurile mai simplu și mai ieftin</span>
-                </li>
-                <li class="flex items-start gap-3 text-on-surface-variant">
-                    <span class="text-outline mt-1 shrink-0">✕</span>
-                    <span>Crezi că Inteligența Artificială este o prostie</span>
-                </li>
-                <li class="flex items-start gap-3 text-on-surface-variant">
-                    <span class="text-outline mt-1 shrink-0">✕</span>
-                    <span>Nu ești dispus să dedici cel puțin 2 ore pe săptămână</span>
-                </li>
-            </ul>
-        </div>
-
     </div>
 </section>
 
