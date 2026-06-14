@@ -181,6 +181,8 @@ tailwind.config = {
 
     /* Counter base styling */
     .counter { display: inline-block; }
+  @keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(0,225,171,.55)}70%{box-shadow:0 0 0 18px rgba(0,225,171,0)}100%{box-shadow:0 0 0 0 rgba(0,225,171,0)}}
+  .cta-pulse{animation:ctaPulse 1.3s ease-out 2}
 </style>
 <!-- ─── CONSENT-GATED TRACKING ───
      Pixels do NOT fire on load. They are loaded only after the user
@@ -265,8 +267,8 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
             <a class="nav-link" href="/blog.html">BLOG</a>
         </div>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
-           href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=nav&utm_content=navbar"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'navbar_cta'}); ttq.track('InitiateCheckout', {content_name: 'navbar_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+           href="#oferta"
+           onclick="goToOffer(event)">
             VREAU 7 ZILE GRATIS
         </a>
         <!-- Mobile hamburger -->
@@ -281,8 +283,8 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <a class="nav-link text-base" href="/cursuri.html">CURSURI</a>
         <a class="nav-link text-base" href="/blog.html">BLOG</a>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-md font-bold text-sm tracking-wide text-center"
-           href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'mobile_cta'}); ttq.track('InitiateCheckout', {content_name: 'mobile_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+           href="#oferta"
+           onclick="goToOffer(event)">
             VREAU 7 ZILE GRATIS
         </a>
     </div>
@@ -314,8 +316,8 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <!-- CTAs -->
         <div class="fade-up fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center">
             <a class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-colors inline-block text-center"
-               href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=hero"
-               onclick="fbq('track', 'InitiateCheckout', {content_name: 'hero_cta'}); ttq.track('InitiateCheckout', {content_name: 'hero_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+               href="#oferta"
+               onclick="goToOffer(event)">
                 Intră 7 zile gratuit
             </a>
             <a class="border border-outline-variant text-primary px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-surface-container-high transition-colors inline-block text-center"
@@ -391,8 +393,8 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
             <h3 class="text-2xl md:text-3xl font-headline font-bold text-primary mb-3">Vrei să creezi clipuri ca acestea pentru afacerea ta?</h3>
             <p class="text-on-surface-variant text-lg mb-8">Intri gratuit. 7 zile. Dacă după 7 zile nu crezi că merită 41 lei/lună, nu plătești nimic.</p>
             <a class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-colors inline-block"
-               href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=showcase"
-               onclick="fbq('track', 'InitiateCheckout', {content_name: 'showcase_cta'}); ttq.track('InitiateCheckout', {content_name: 'showcase_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+               href="#oferta"
+               onclick="goToOffer(event)">
                 VREAU 7 ZILE GRATIS
             </a>
         </div>
@@ -400,7 +402,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
 </section>
 
 <!-- PRICING + TIMER SECTION -->
-<section class="py-28 bg-surface relative overflow-hidden">
+<section class="py-28 bg-surface relative overflow-hidden scroll-mt-28" id="oferta">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full opacity-10 blur-[120px]" style="background: radial-gradient(ellipse, #00e1ab 0%, transparent 70%);"></div>
     <div class="relative max-w-2xl mx-auto px-8">
 
@@ -454,12 +456,12 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                 </div>
 
                 <!-- CTA -->
-                <a class="block bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase"
+                <a id="cta-live" class="block bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase"
                    href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=pricing_timer"
                    onclick="fbq('track', 'InitiateCheckout', {content_name: 'pricing_timer_cta'}); ttq.track('InitiateCheckout', {content_name: 'pricing_timer_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
                     Vreau 7 zile gratuit
                 </a>
-                <p class="text-on-surface-variant/60 text-xs mt-4">Îți va cere cardul în momentul înscrierii. Anulezi oricând.</p>
+                <p class="text-on-surface-variant text-base leading-relaxed mt-4 max-w-md mx-auto">Vei fi redirecționat în comunitatea noastră de pe Skool, unde îți creezi contul în câteva secunde. Pentru proba gratuită e nevoie de un card — dar <span class="text-primary-fixed-dim font-semibold">nu ești taxat în primele 7 zile</span> și poți anula oricând, din 2 click-uri. Îți trimitem și un reminder înainte să se termine proba.</p>
             </div>
         </div>
 
@@ -695,8 +697,8 @@ setInterval(updateCountdown, 1000);
             <p class="text-xl font-headline font-bold text-primary mb-2">Încearcă totul gratuit 7 zile.</p>
             <p class="text-on-surface-variant mb-8">Fără risc. Dacă nu e pentru tine, nu plătești nimic.</p>
             <a class="bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 inline-block"
-               href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=value_stack"
-               onclick="fbq('track', 'InitiateCheckout', {content_name: 'value_stack_cta'}); ttq.track('InitiateCheckout', {content_name: 'value_stack_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+               href="#oferta"
+               onclick="goToOffer(event)">
                 → Vreau acces gratuit
             </a>
         </div>
@@ -897,8 +899,8 @@ function toggleFaq(btn) {
             M-am hotărât,<br><span class="text-primary-fixed-dim italic">vreau să învăț!</span>
         </h2>
         <a class="bg-primary-fixed text-on-primary-fixed px-14 py-5 rounded-md font-bold text-xl tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase inline-block"
-           href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=final_cta"
-           onclick="fbq('track', 'InitiateCheckout', {content_name: 'final_cta'}); ttq.track('InitiateCheckout', {content_name: 'final_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+           href="#oferta"
+           onclick="goToOffer(event)">
             INTRĂ 7 ZILE GRATUIT
         </a>
     </div>
@@ -1264,5 +1266,25 @@ function toggleFaq(btn) {
 })();
 </script>
 <!-- ═══════════ END COOKIE CONSENT ═══════════ -->
+<script>
+function goToOffer(e){
+  if(e && e.preventDefault) e.preventDefault();
+  var mm=document.getElementById('mobile-menu');
+  if(mm) mm.classList.remove('open');
+  pulseOffer();
+}
+function pulseOffer(){
+  var btn=document.getElementById('cta-live');
+  if(!btn) return;
+  btn.scrollIntoView({behavior:'smooth', block:'center'});
+  setTimeout(function(){
+    btn.classList.add('cta-pulse');
+    setTimeout(function(){ btn.classList.remove('cta-pulse'); }, 2600);
+  }, 650);
+}
+window.addEventListener('load', function(){
+  if(window.location.hash === '#oferta'){ setTimeout(pulseOffer, 300); }
+});
+</script>
 </body>
 </html>

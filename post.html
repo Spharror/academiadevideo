@@ -101,21 +101,54 @@
   #post-content pre { background: #1d2022; padding: 1.5rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1.5rem; }
   #post-content pre code { background: none; padding: 0; }
   #post-content hr { border-color: rgba(58,74,67,0.3); margin: 2rem 0; }
+  .nav-link {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    color: rgba(251,255,250,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-link:hover { color: #00e1ab; }
+  .nav-link.active { color: #00e1ab; }
+  #mobile-menu { display: none; }
+  #mobile-menu.open { display: flex; }
 </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
 
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#111416]/70 backdrop-blur-xl">
-<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-bold tracking-tighter text-[#fbfffa] font-headline" style="">Academia de Video</div>
-<div class="hidden md:flex gap-8 items-center"><a class="font-['Space_Grotesk'] tracking-wide uppercase text-sm font-bold text-[#fbfffa]/60 hover:text-[#00e1ab] transition-colors duration-300" href="/#cine-suntem" style="">DESPRE NOI</a>
-<a class="font-['Space_Grotesk'] tracking-wide uppercase text-sm font-bold text-[#fbfffa]/60 hover:text-[#00e1ab] transition-colors duration-300" href="/#comunitate-section" style="">COMUNITATE</a>
-<a class="font-['Space_Grotesk'] tracking-wide uppercase text-sm font-bold text-[#fbfffa]/60 hover:text-[#00e1ab] transition-colors duration-300" href="/#curricula-section" style="">CURSURI</a>
-<a class="font-['Space_Grotesk'] tracking-wide uppercase text-sm font-bold text-[#fbfffa]/60 hover:text-[#00e1ab] transition-colors duration-300" href="/#pricing-section" style="">PREȚ</a>
-<a class="blog-nav-btn" href="/blog.html">BLOG</a></div>
-<a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block" href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=facebook&utm_medium=paid&utm_campaign=faza1&utm_content=navbar" onclick="fbq('track', 'InitiateCheckout', {content_name: 'navbar_cta'});" style="">VREAU 7 ZILE GRATIS</a>
-</div>
+<nav class="fixed top-0 w-full z-50 bg-[#111416]/80 backdrop-blur-xl border-b border-outline-variant/10">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <a href="/index.html" class="text-2xl font-bold tracking-tighter text-[#fbfffa] font-headline" style="text-decoration:none;">Academia de Video</a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="nav-link" href="/index.html">HOME</a>
+            <a class="nav-link" href="/despre-noi.html">DESPRE NOI</a>
+            <a class="nav-link" href="/cursuri.html">CURSURI</a>
+            <a class="nav-link active" href="/blog.html">BLOG</a>
+        </div>
+        <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
+           href="/index.html#oferta">
+            VREAU 7 ZILE GRATIS
+        </a>
+        <!-- Mobile hamburger -->
+        <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="flex-col bg-[#111416] px-8 py-6 gap-6 border-t border-outline-variant/10">
+        <a class="nav-link text-base" href="/index.html">HOME</a>
+        <a class="nav-link text-base" href="/despre-noi.html">DESPRE NOI</a>
+        <a class="nav-link text-base" href="/cursuri.html">CURSURI</a>
+        <a class="nav-link active text-base" href="/blog.html">BLOG</a>
+        <a class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-md font-bold text-sm tracking-wide text-center"
+           href="/index.html#oferta">
+            VREAU 7 ZILE GRATIS
+        </a>
+    </div>
 </nav>
 
 <!-- Post -->
@@ -159,18 +192,56 @@
   <!-- CTA -->
   <div id="post-cta" class="hidden mt-16 p-8 bg-surface-container-low rounded-xl border border-outline-variant/20 text-center">
     <p class="text-on-surface-variant mb-4">Vrei să înveți mai mult despre producția video?</p>
-    <a href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3" class="inline-block bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-md font-bold uppercase tracking-wide hover:bg-primary-fixed-dim transition-all">ÎNCEARCĂ 7 ZILE GRATUIT</a>
+    <a href="/index.html#oferta" class="inline-block bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-md font-bold uppercase tracking-wide hover:bg-primary-fixed-dim transition-all">ÎNCEARCĂ 7 ZILE GRATUIT</a>
   </div>
 
 </article>
 
 <!-- Footer -->
 <footer class="bg-[#191c1e]">
-<div class="max-w-7xl mx-auto">
-  <div class="px-12 py-8 border-t border-[#3a4a43]/10 text-center">
-    <span class="text-[#fbfffa]/40 text-xs uppercase tracking-widest">© 2026 Academia de Video. Toate drepturile rezervate.</span>
-  </div>
-</div>
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 w-full gap-12 border-t border-[#3a4a43]/20">
+            <div class="max-w-sm">
+                <div class="text-xl font-bold text-[#fbfffa] font-headline mb-4 uppercase tracking-tighter">Academia de Video</div>
+                <p class="text-[#fbfffa]/40 font-body text-sm leading-relaxed mb-6">Educație practică de video și AI în limba română. Creăm comunitatea care definește standardele producției video moderne în România.</p>
+                <p class="text-[#fbfffa]/60 text-sm font-headline font-bold uppercase tracking-[0.15em] mb-3">Conturi social media:</p>
+                <div class="flex gap-3">
+                    <a class="group w-11 h-11 rounded-lg border border-outline-variant flex items-center justify-center text-primary hover:border-primary-fixed-dim hover:bg-primary-fixed/5 transition-all" href="https://www.tiktok.com/@academiadevideo?_r=1&_t=ZN-97CQv8myZk7" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg class="w-5 h-5 fill-current group-hover:text-primary-fixed-dim transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.85z"/>
+                        </svg>
+                    </a>
+                    <a class="group w-11 h-11 rounded-lg border border-outline-variant flex items-center justify-center text-primary hover:border-primary-fixed-dim hover:bg-primary-fixed/5 transition-all" href="https://www.youtube.com/@castigacuai" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <svg class="w-5 h-5 fill-current group-hover:text-primary-fixed-dim transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="flex gap-16">
+                <div>
+                    <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Pagini</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="/index.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Home</a>
+                        <a href="/despre-noi.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Despre noi</a>
+                        <a href="/cursuri.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Cursuri</a>
+                        <a href="/blog.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-auto">
+                <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Newsletter</h4>
+                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește tips & tricks săptămânale de AI video direct în inbox.</p>
+                <div class="flex gap-2">
+                    <input class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full md:w-64" placeholder="Email-ul tău" type="email">
+                    <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="px-12 py-8 border-t border-[#3a4a43]/10 text-center md:text-left">
+            <span class="text-[#fbfffa]/40 text-xs uppercase tracking-widest">© 2026 Academia de Video. Toate drepturile rezervate.</span>
+        </div>
+    </div>
 </footer>
 
 <script>
