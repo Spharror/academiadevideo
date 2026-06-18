@@ -259,8 +259,10 @@ function loadAnalytics() {
     // No analytics tools wired yet — add Google Analytics etc. here when needed.
 }
 
-// Safe no-op stubs so any fbq()/ttq() calls elsewhere don't error before consent
-window.fbq = window.fbq || function(){ (window.fbq.q = window.fbq.q || []).push(arguments); };
+// Safe no-op stub for ttq so any ttq() calls elsewhere don't error before consent.
+// NOTE: we deliberately do NOT stub fbq — the official Meta snippet defines its own
+// fbq queue, and pre-defining window.fbq would trigger its "if(f.fbq)return" guard
+// and silently prevent the real pixel from initializing.
 window.ttq = window.ttq || { track: function(){}, page: function(){} };
 
 // Apply stored consent immediately on load (before banner shows)
@@ -480,7 +482,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                 <!-- CTA -->
                 <a id="cta-live" class="block bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase"
                    href="https://www.skool.com/editare-video-5587/about?ref=ff1bffd1e5804078becc0d7792f183f3&utm_source=website&utm_medium=organic&utm_campaign=pricing_timer"
-                   onclick="fbq('track', 'InitiateCheckout', {content_name: 'pricing_timer_cta'}); ttq.track('InitiateCheckout', {content_name: 'pricing_timer_cta'}); if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
+                   onclick="if(typeof fbq==='function'){fbq('track', 'InitiateCheckout', {content_name: 'pricing_timer_cta'});} if(window.ttq&&ttq.track){ttq.track('InitiateCheckout', {content_name: 'pricing_timer_cta'});} if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-971316963/PeiVCNObyLocEOO9lM8D'});}">
                     Vreau 7 zile gratuit
                 </a>
                 <p class="text-on-surface-variant text-base leading-relaxed mt-4 max-w-md mx-auto">Vei fi redirecționat în comunitatea noastră de pe Skool, unde îți creezi contul în câteva secunde. Pentru proba gratuită e nevoie de un card — dar <span class="text-primary-fixed-dim font-semibold">nu ești taxat în primele 7 zile</span> și poți anula oricând, din 2 click-uri. Îți trimitem și un reminder înainte să se termine proba.</p>
