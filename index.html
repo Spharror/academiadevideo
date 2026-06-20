@@ -205,6 +205,22 @@ tailwind.config = {
   .wa-web{display:inline-block;color:#00e1ab;font-size:.85rem;font-weight:600;text-decoration:none;}
   .wa-web:hover{text-decoration:underline;}
   @media (max-width:767px){#wa-label{display:none;}#wa-popup{display:none !important;}#wa-icon{width:3.25rem;height:3.25rem;}}
+  /* video thumbnail play overlay */
+  .video-card{position:relative;cursor:pointer;}
+  .video-card .play-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to top,rgba(0,0,0,.35),rgba(0,0,0,0) 45%);transition:background .25s;}
+  .video-card .play-ov svg{width:4rem;height:4rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,.55));transition:transform .25s;opacity:.95;}
+  .video-card:hover .play-ov{background:linear-gradient(to top,rgba(0,0,0,.5),rgba(0,0,0,.15));}
+  .video-card:hover .play-ov svg{transform:scale(1.12);}
+  .video-card:focus-visible{outline:2px solid #00e1ab;outline-offset:3px;}
+  /* video lightbox modal */
+  #video-modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:1.5rem;}
+  #video-modal.open{display:flex;}
+  .vm-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.85);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);}
+  .vm-dialog{position:relative;width:100%;max-width:960px;z-index:1;}
+  .vm-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:.75rem;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+  .vm-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vm-close{position:absolute;top:-2.8rem;right:0;background:none;border:none;color:#fff;font-size:2rem;line-height:1;cursor:pointer;opacity:.85;}
+  .vm-close:hover{opacity:1;}
 </style>
 <!-- ─── CONSENT-GATED TRACKING ───
      Pixels do NOT fire on load. They are loaded only after the user
@@ -366,56 +382,75 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
             </p>
         </div>
 
-        <!-- Video Grid — real AI clips -->
+        <!-- Video Grid — AI clips (click → YouTube lightbox) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            <!-- Featured large video: Starbucks -->
-            <div class="lg:col-span-2 video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest relative" style="aspect-ratio:16/9;">
-                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                    <source src="videos/starbucks_machiato_ad.mp4" type="video/mp4">
-                </video>
-                <div class="absolute bottom-4 left-4">
-                    <span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">Featured</span>
+            <!-- Large: Caramel Macchiato -->
+            <div class="lg:col-span-2 video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;" data-vid="s780Omq3Ek0" role="button" tabindex="0" aria-label="Reclamă Starbucks Caramel Macchiato creată cu AI">
+                    <img src="/images/macchiato.webp" alt="Reclamă Starbucks Caramel Macchiato creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
                 </div>
-            </div>
-            <!-- Right column: Salon Canin + Cafe stacked -->
+            <!-- Right column stacked -->
             <div class="flex flex-col gap-6">
-                <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest flex-1" style="aspect-ratio:16/9;">
-                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                        <source src="videos/salon_canin_ad.mp4" type="video/mp4">
-                    </video>
+                <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest flex-1" style="aspect-ratio:16/9;" data-vid="QydCkUEXjLc" role="button" tabindex="0" aria-label="Reclamă salon canin creată cu AI">
+                    <img src="/images/salon.webp" alt="Reclamă salon canin creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
                 </div>
-                <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest flex-1" style="aspect-ratio:16/9;">
-                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                        <source src="videos/cafe_ad_site.mp4" type="video/mp4">
-                    </video>
+                <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest flex-1" style="aspect-ratio:16/9;" data-vid="SZ0oWXhr5Ik" role="button" tabindex="0" aria-label="Reclamă cafenea creată cu AI">
+                    <img src="/images/cafenea.webp" alt="Reclamă cafenea creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
                 </div>
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Ad 13 sec -->
-            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;">
-                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                    <source src="videos/ad_13_sec_site.mp4" type="video/mp4">
-                </video>
-            </div>
-            <!-- Igloo pe munte -->
-            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;">
-                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                    <source src="videos/igloo_munte.mp4" type="video/mp4">
-                </video>
-            </div>
-            <!-- Jungle big snake -->
-            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;">
-                <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                    <source src="videos/jungle_big_snake.mp4" type="video/mp4">
-                </video>
+            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;" data-vid="ITEGbi7fv1Y" role="button" tabindex="0" aria-label="Reclamă Croco Sticks creată cu AI">
+                    <img src="/images/croco.webp" alt="Reclamă Croco Sticks creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
+                </div>
+            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;" data-vid="pjwuyi6LEHw" role="button" tabindex="0" aria-label="Reclamă ciocolată Laura creată cu AI">
+                    <img src="/images/laura.webp" alt="Reclamă ciocolată Laura creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
+                </div>
+            <div class="video-card rounded-xl overflow-hidden border border-outline-variant/20 bg-surface-container-lowest" style="aspect-ratio:16/9;" data-vid="jZ8rKaSPwTs" role="button" tabindex="0" aria-label="Reclamă hârtie Navigator creată cu AI">
+                    <img src="/images/navigator.webp" alt="Reclamă hârtie Navigator creată cu AI" class="w-full h-full object-cover" loading="lazy">
+                    <span class="play-ov"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.95)"/><path d="M10 8.3l6 3.7-6 3.7z" fill="#111416"/></svg></span>
+                </div>
+        </div>
+
+        <!-- Cost comparison: agency vs AI -->
+        <div class="reveal max-w-4xl mx-auto mt-16">
+            <div class="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-8 md:p-10">
+                <p class="text-center text-[#00e1ab] font-headline font-bold text-2xl md:text-3xl tracking-[0.15em] uppercase mb-8">Diferența de preț</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="text-center rounded-xl border border-outline-variant/20 p-6 bg-surface-container-lowest">
+                        <p class="text-on-surface-variant text-sm uppercase tracking-widest mb-3">Reclamă făcută de agenție</p>
+                        <p class="font-headline font-bold text-4xl md:text-5xl text-on-surface-variant/70 line-through decoration-2">3.500–15.000 lei</p>
+                        <p class="text-on-surface-variant/50 text-sm mt-2">1.500–3.000 € / reclamă</p>
+                    </div>
+                    <div class="text-center rounded-xl border border-primary-fixed/40 p-6 bg-primary-fixed/5">
+                        <p class="text-primary-fixed-dim text-sm uppercase tracking-widest mb-3 font-bold">Aceeași reclamă, cu AI</p>
+                        <p class="font-headline font-bold text-4xl md:text-5xl text-primary-fixed">7–15 lei</p>
+                        <p class="text-on-surface-variant text-sm mt-2">per clip de 15 secunde</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8">
+                    <div class="flex gap-3 items-start">
+                        <span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+                        <p class="text-on-surface-variant text-lg"><span class="text-primary font-semibold">Pentru afacerea ta:</span> nu mai plătești mii de euro pe reclame. Le faci singur, pe orice laptop.</p>
+                    </div>
+                    <div class="flex gap-3 items-start">
+                        <span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+                        <p class="text-on-surface-variant text-lg"><span class="text-primary font-semibold">Ca freelancer:</span> facturezi clientului sute de euro pe reclamă, te costă câțiva lei. Restul e profit.</p>
+                    </div>
+                </div>
+                <p class="text-center text-on-surface-variant text-base md:text-lg mt-8 max-w-3xl mx-auto leading-relaxed">Practic dacă generezi măcar o singură reclamă pe care să o folosești, deja ți-ai acoperit <span class="text-primary-fixed-dim font-semibold">abonamentul pe 1 an de zile</span> în comunitatea noastră.</p>
+                <p class="text-center text-on-surface-variant/70 text-sm mt-4 max-w-3xl mx-auto leading-relaxed">Costul cu AI reprezintă strict generarea clipului. Calitatea finală depinde de mai mulți factori: imaginație, detalierea descrierii acțiunilor, înțelegerea și respectarea pașilor de producție — dar toate aceste etape sunt exact cele pe care le înveți în cursurile noastre.</p>
             </div>
         </div>
 
         <div class="text-center mt-12">
-            <p class="text-on-surface-variant text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">Acestea nu sunt clipuri pentru branduri cu bugete de milioane. Sunt exact tipul de conținut pe care îl poți crea tu, pentru afacerea ta, după prima lecție din curs - totul până diseară.</p>
+            <p class="text-on-surface-variant text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">După ce parcurgi cursurile noastre vei dobândi cunoștințele necesare pentru a genera și tu astfel de clipuri - durează câteva ore și le poți parcurge în seara asta!</p>
             <h3 class="text-2xl md:text-3xl font-headline font-bold text-primary mb-3">Vrei să creezi clipuri ca acestea pentru afacerea ta?</h3>
-            <p class="text-on-surface-variant text-lg mb-8">Intri gratuit. 7 zile. Dacă după 7 zile nu crezi că merită 114 lei/lună, nu plătești nimic.</p>
+            <p class="text-on-surface-variant text-lg mb-8">Intri gratuit 7 zile. Dacă după 7 zile nu crezi că merită să rămâi în comunitate, nu plătești nimic.</p>
             <a class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-colors inline-block"
                href="#oferta"
                onclick="goToOffer(event)">
@@ -1339,6 +1374,35 @@ document.addEventListener('click', function(e){
   var w=document.getElementById('wa-widget'), p=document.getElementById('wa-popup');
   if(p && p.classList.contains('open') && w && !w.contains(e.target)){ p.classList.remove('open'); }
 });
+</script>
+<!-- Video lightbox -->
+<div id="video-modal" aria-hidden="true">
+  <div class="vm-backdrop" data-close></div>
+  <div class="vm-dialog">
+    <button class="vm-close" aria-label="Închide" data-close>&times;</button>
+    <div class="vm-frame" role="dialog" aria-modal="true" aria-label="Player video"><div id="vm-player"></div></div>
+  </div>
+</div>
+<script>
+function openVideo(id){
+  document.getElementById('vm-player').innerHTML =
+    '<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+  var m=document.getElementById('video-modal');
+  m.classList.add('open'); m.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeVideo(){
+  var m=document.getElementById('video-modal');
+  m.classList.remove('open'); m.setAttribute('aria-hidden','true');
+  document.getElementById('vm-player').innerHTML='';
+  document.body.style.overflow='';
+}
+document.querySelectorAll('.video-card[data-vid]').forEach(function(card){
+  card.addEventListener('click', function(){ openVideo(card.dataset.vid); });
+  card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openVideo(card.dataset.vid); } });
+});
+document.addEventListener('click', function(e){ if(e.target && e.target.hasAttribute && e.target.hasAttribute('data-close')) closeVideo(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeVideo(); });
 </script>
 </body>
 </html>
