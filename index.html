@@ -475,7 +475,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         </div>
 
         <!-- Price card -->
-        <div class="reveal-scale rounded-2xl border border-primary-fixed/30 overflow-hidden relative" style="background: linear-gradient(135deg, rgba(0,225,171,0.12) 0%, rgba(0,225,171,0.02) 100%);">
+        <div id="oferta-card" class="reveal-scale rounded-2xl border border-primary-fixed/30 overflow-hidden relative scroll-mt-28" style="background: linear-gradient(135deg, rgba(0,225,171,0.12) 0%, rgba(0,225,171,0.02) 100%);">
             <!-- Discount banner -->
             <div class="bg-primary-fixed text-on-primary-fixed text-center py-3 font-headline font-bold text-sm uppercase tracking-widest">
                 ⚡ Reducere 17% — doar azi
@@ -1333,13 +1333,15 @@ function goToOffer(e){
   pulseOffer();
 }
 function pulseOffer(){
+  var sec=document.getElementById('oferta-card');
   var btn=document.getElementById('cta-live');
-  if(!btn) return;
-  btn.scrollIntoView({behavior:'smooth', block:'center'});
-  setTimeout(function(){
-    btn.classList.add('cta-pulse');
-    setTimeout(function(){ btn.classList.remove('cta-pulse'); }, 2600);
-  }, 650);
+  if(sec){ sec.scrollIntoView({behavior:'smooth', block:'start'}); }
+  if(btn){
+    setTimeout(function(){
+      btn.classList.add('cta-pulse');
+      setTimeout(function(){ btn.classList.remove('cta-pulse'); }, 2600);
+    }, 650);
+  }
 }
 window.addEventListener('load', function(){
   if(window.location.hash === '#oferta'){ setTimeout(pulseOffer, 300); }
