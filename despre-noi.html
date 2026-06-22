@@ -92,7 +92,7 @@ function loadMarketingPixels() {
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '973248965246898');
+    fbq('init', '2076122999672142');
     fbq('track', 'PageView');
 
     // TikTok Pixel
@@ -125,8 +125,9 @@ function loadAnalytics() {
     // No analytics tools wired yet — add Google Analytics etc. here when needed.
 }
 
-// Safe no-op stubs so any fbq()/ttq() calls elsewhere don't error before consent
-window.fbq = window.fbq || function(){ (window.fbq.q = window.fbq.q || []).push(arguments); };
+// Safe no-op stub for ttq only. We deliberately do NOT stub fbq —
+// the official Meta snippet defines its own fbq and pre-stubbing triggers
+// its "if(f.fbq)return" guard, blocking real initialization.
 window.ttq = window.ttq || { track: function(){}, page: function(){} };
 
 // Apply stored consent immediately on load (before banner shows)
@@ -156,7 +157,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         </div>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
            href="/index.html#oferta">
-            VREAU 7 ZILE GRATIS
+            INTRĂ ÎN COMUNITATE
         </a>
         <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
             <span class="material-symbols-outlined text-3xl">menu</span>
@@ -282,7 +283,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <div class="reveal text-center">
             <a class="bg-primary-fixed text-on-primary-fixed px-12 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase inline-block"
                href="/index.html#oferta">
-                Învață de la noi — 7 zile gratuit
+                Învață de la noi — intră în comunitate
             </a>
         </div>
 

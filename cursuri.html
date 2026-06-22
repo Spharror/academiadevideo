@@ -214,7 +214,7 @@ function loadMarketingPixels() {
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '973248965246898');
+    fbq('init', '2076122999672142');
     fbq('track', 'PageView');
 
     // TikTok Pixel
@@ -247,8 +247,9 @@ function loadAnalytics() {
     // No analytics tools wired yet — add Google Analytics etc. here when needed.
 }
 
-// Safe no-op stubs so any fbq()/ttq() calls elsewhere don't error before consent
-window.fbq = window.fbq || function(){ (window.fbq.q = window.fbq.q || []).push(arguments); };
+// Safe no-op stub for ttq only. We deliberately do NOT stub fbq —
+// the official Meta snippet defines its own fbq and pre-stubbing triggers
+// its "if(f.fbq)return" guard, blocking real initialization.
 window.ttq = window.ttq || { track: function(){}, page: function(){} };
 
 // Apply stored consent immediately on load (before banner shows)
@@ -278,7 +279,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         </div>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
            href="/index.html#oferta">
-            VREAU 7 ZILE GRATIS
+            INTRĂ ÎN COMUNITATE
         </a>
         <!-- Mobile hamburger -->
         <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
@@ -293,7 +294,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <a class="nav-link text-base" href="/blog.html">BLOG</a>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-md font-bold text-sm tracking-wide text-center"
            href="/index.html#oferta">
-            VREAU 7 ZILE GRATIS
+            INTRĂ ÎN COMUNITATE
         </a>
     </div>
 </nav>
@@ -415,11 +416,11 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
             Deblochezi <span class="text-primary-fixed-dim">toate cursurile</span><br>cu un singur abonament.
         </h2>
         <p class="text-on-surface-variant text-lg mb-10 max-w-xl mx-auto">
-            Intri gratuit 7 zile. Dacă nu e pentru tine, nu plătești nimic.
+            Acces complet pentru 114 lei/lună. Anulezi oricând.
         </p>
         <a class="bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-xl tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase inline-block"
            href="/index.html#oferta">
-            Intră 7 zile gratuit
+            Intră în comunitate
         </a>
     </div>
 </section>

@@ -116,6 +116,77 @@
   #mobile-menu { display: none; }
   #mobile-menu.open { display: flex; }
 </style>
+<!-- ─── CONSENT-GATED TRACKING ───
+     Pixels do NOT fire on load. They are loaded only after the user
+     grants "marketing" consent via the cookie banner below. -->
+<script>
+window.AdV_Consent = { analytics: false, marketing: false };
+
+// ── Marketing: Meta Pixel + TikTok Pixel ──
+function loadMarketingPixels() {
+    if (window.AdV_marketingLoaded) return;
+    window.AdV_marketingLoaded = true;
+
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2076122999672142');
+    fbq('track', 'PageView');
+
+    // TikTok Pixel
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D80VQNRC77UCEH8TB2I0');
+      ttq.page();
+    }(window, document, 'ttq');
+
+    // Google Ads (gtag.js)
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-971316963';
+    document.head.appendChild(gtagScript);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'AW-971316963');
+
+    window.AdV_Consent.marketing = true;
+}
+
+// ── Analytics: placeholder for future trackers (e.g. Google Analytics) ──
+function loadAnalytics() {
+    if (window.AdV_analyticsLoaded) return;
+    window.AdV_analyticsLoaded = true;
+    window.AdV_Consent.analytics = true;
+    // No analytics tools wired yet — add Google Analytics etc. here when needed.
+}
+
+// Safe no-op stub for ttq so any ttq() calls elsewhere don't error before consent.
+// NOTE: we deliberately do NOT stub fbq — the official Meta snippet defines its own
+// fbq queue, and pre-defining window.fbq would trigger its "if(f.fbq)return" guard
+// and silently prevent the real pixel from initializing.
+window.ttq = window.ttq || { track: function(){}, page: function(){} };
+
+// Apply stored consent immediately on load (before banner shows)
+(function applyStoredConsent() {
+    try {
+        var saved = JSON.parse(localStorage.getItem('adv_cookie_consent') || 'null');
+        if (saved) {
+            if (saved.marketing) loadMarketingPixels();
+            if (saved.analytics) loadAnalytics();
+        }
+    } catch (e) {}
+})();
+</script>
+<!-- End consent-gated tracking -->
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
 
@@ -131,7 +202,7 @@
         </div>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
            href="/index.html#oferta">
-            VREAU 7 ZILE GRATIS
+            INTRĂ ÎN COMUNITATE
         </a>
         <!-- Mobile hamburger -->
         <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
@@ -146,7 +217,7 @@
         <a class="nav-link active text-base" href="/blog.html">BLOG</a>
         <a class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-md font-bold text-sm tracking-wide text-center"
            href="/index.html#oferta">
-            VREAU 7 ZILE GRATIS
+            INTRĂ ÎN COMUNITATE
         </a>
     </div>
 </nav>
@@ -192,7 +263,7 @@
   <!-- CTA -->
   <div id="post-cta" class="hidden mt-16 p-8 bg-surface-container-low rounded-xl border border-outline-variant/20 text-center">
     <p class="text-on-surface-variant mb-4">Vrei să înveți mai mult despre producția video?</p>
-    <a href="/index.html#oferta" class="inline-block bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-md font-bold uppercase tracking-wide hover:bg-primary-fixed-dim transition-all">ÎNCEARCĂ 7 ZILE GRATUIT</a>
+    <a href="/index.html#oferta" class="inline-block bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-md font-bold uppercase tracking-wide hover:bg-primary-fixed-dim transition-all">INTRĂ ÎN COMUNITATE</a>
   </div>
 
 </article>
@@ -319,5 +390,179 @@ function showError() {
 
 loadPost();
 </script>
+<!-- ═══════════ COOKIE CONSENT ═══════════ -->
+<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[100] hidden">
+    <div class="max-w-5xl mx-auto m-4 rounded-2xl border border-outline-variant/30 bg-surface-container/95 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div class="p-6 md:p-8">
+            <div class="flex flex-col md:flex-row md:items-center gap-6">
+                <div class="flex-1">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-2xl text-primary-fixed-dim">cookie</span>
+                        <h3 class="font-headline font-bold text-primary text-lg">Folosim cookie-uri</h3>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">
+                        Folosim cookie-uri pentru a îmbunătăți experiența ta și pentru a măsura eficiența reclamelor noastre. Poți accepta tot, respinge tot, sau alege exact ce permiți.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+                    <button onclick="cookieRejectAll()" class="px-6 py-3 rounded-md border border-outline-variant text-primary font-bold text-sm hover:bg-surface-container-high transition-colors whitespace-nowrap">
+                        Respinge tot
+                    </button>
+                    <button onclick="cookieOpenSettings()" class="px-6 py-3 rounded-md border border-outline-variant text-primary font-bold text-sm hover:bg-surface-container-high transition-colors whitespace-nowrap">
+                        Personalizează
+                    </button>
+                    <button onclick="cookieAcceptAll()" class="px-6 py-3 rounded-md bg-primary-fixed text-on-primary-fixed font-bold text-sm hover:bg-primary-fixed-dim transition-colors whitespace-nowrap">
+                        Accept tot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings modal -->
+<div id="cookie-modal" class="fixed inset-0 z-[101] hidden items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+    <div class="w-full max-w-lg rounded-2xl border border-outline-variant/30 bg-surface-container overflow-hidden max-h-[90vh] overflow-y-auto">
+        <div class="p-6 md:p-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-headline font-bold text-primary text-xl">Preferințe cookie-uri</h3>
+                <button onclick="cookieCloseSettings()" class="text-on-surface-variant hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Essential -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Esențiale</h4>
+                        <span class="text-primary-fixed-dim text-xs font-bold uppercase tracking-wider bg-primary-fixed/10 px-3 py-1 rounded-full border border-primary-fixed/20">Mereu active</span>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Necesare pentru funcționarea site-ului și pentru a reține preferințele tale. Nu pot fi dezactivate.</p>
+                </div>
+
+                <!-- Analytics -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Analiză</h4>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="toggle-analytics">
+                            <span class="cookie-slider"></span>
+                        </label>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Ne ajută să înțelegem cum este folosit site-ul, ca să îl îmbunătățim.</p>
+                </div>
+
+                <!-- Marketing -->
+                <div class="rounded-xl border border-outline-variant/20 bg-surface-container-low p-5">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h4 class="font-headline font-bold text-primary text-base">Marketing</h4>
+                        <label class="cookie-switch">
+                            <input type="checkbox" id="toggle-marketing">
+                            <span class="cookie-slider"></span>
+                        </label>
+                    </div>
+                    <p class="text-on-surface-variant text-sm leading-relaxed">Permit Meta (Facebook/Instagram) și TikTok să măsoare eficiența reclamelor noastre.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-8">
+                <button onclick="cookieSaveSettings()" class="flex-1 px-6 py-3 rounded-md bg-primary-fixed text-on-primary-fixed font-bold text-sm hover:bg-primary-fixed-dim transition-colors">
+                    Salvează preferințele
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Floating "Cookie settings" reopen button -->
+<button id="cookie-reopen" onclick="cookieOpenSettings()" class="fixed bottom-4 left-4 z-[99] hidden w-12 h-12 rounded-full bg-surface-container border border-outline-variant/30 items-center justify-center text-primary-fixed-dim hover:bg-surface-container-high transition-colors shadow-lg" title="Setări cookie-uri">
+    <span class="material-symbols-outlined">cookie</span>
+</button>
+
+<style>
+    .cookie-switch { position: relative; display: inline-block; width: 48px; height: 26px; flex-shrink: 0; }
+    .cookie-switch input { opacity: 0; width: 0; height: 0; }
+    .cookie-slider {
+        position: absolute; cursor: pointer; inset: 0;
+        background: #3a4a43; border-radius: 999px; transition: 0.3s;
+    }
+    .cookie-slider:before {
+        content: ""; position: absolute; height: 20px; width: 20px;
+        left: 3px; bottom: 3px; background: #fbfffa; border-radius: 50%; transition: 0.3s;
+    }
+    .cookie-switch input:checked + .cookie-slider { background: #00e1ab; }
+    .cookie-switch input:checked + .cookie-slider:before { transform: translateX(22px); }
+</style>
+
+<script>
+(function() {
+    const STORAGE_KEY = 'adv_cookie_consent';
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    const reopenBtn = document.getElementById('cookie-reopen');
+
+    function getConsent() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); }
+        catch (e) { return null; }
+    }
+    function saveConsent(consent) {
+        consent.timestamp = new Date().toISOString();
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(consent)); } catch (e) {}
+        applyConsent(consent);
+        hideBanner();
+        reopenBtn.classList.remove('hidden');
+        reopenBtn.classList.add('flex');
+    }
+    function applyConsent(consent) {
+        if (consent.marketing && typeof loadMarketingPixels === 'function') loadMarketingPixels();
+        if (consent.analytics && typeof loadAnalytics === 'function') loadAnalytics();
+    }
+    function showBanner() { banner.classList.remove('hidden'); }
+    function hideBanner() { banner.classList.add('hidden'); }
+
+    // Global handlers (referenced by onclick)
+    window.cookieAcceptAll = function() {
+        saveConsent({ essential: true, analytics: true, marketing: true });
+    };
+    window.cookieRejectAll = function() {
+        saveConsent({ essential: true, analytics: false, marketing: false });
+    };
+    window.cookieOpenSettings = function() {
+        const c = getConsent();
+        document.getElementById('toggle-analytics').checked = c ? !!c.analytics : false;
+        document.getElementById('toggle-marketing').checked = c ? !!c.marketing : false;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    };
+    window.cookieCloseSettings = function() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    };
+    window.cookieSaveSettings = function() {
+        saveConsent({
+            essential: true,
+            analytics: document.getElementById('toggle-analytics').checked,
+            marketing: document.getElementById('toggle-marketing').checked
+        });
+        window.cookieCloseSettings();
+    };
+
+    // Close modal on backdrop click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) window.cookieCloseSettings();
+    });
+
+    // On load: show banner if no decision yet, else show reopen button
+    const existing = getConsent();
+    if (!existing) {
+        showBanner();
+    } else {
+        reopenBtn.classList.remove('hidden');
+        reopenBtn.classList.add('flex');
+    }
+})();
+</script>
+<!-- ═══════════ END COOKIE CONSENT ═══════════ -->
 </body>
 </html>
