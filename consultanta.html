@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html class="dark" lang="ro">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Consultanță AI pentru firme | Academia de Video</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "tertiary-fixed-dim": "#c2c7cf",
+                "tertiary": "#fffdff",
+                "secondary-container": "#454749",
+                "on-primary-container": "#007255",
+                "on-tertiary": "#2c3137",
+                "on-primary-fixed": "#002116",
+                "on-surface-variant": "#b9cbc1",
+                "outline": "#83958c",
+                "surface-container-low": "#191c1e",
+                "on-primary-fixed-variant": "#00513c",
+                "tertiary-fixed": "#dee3eb",
+                "on-tertiary-fixed-variant": "#42474e",
+                "error-container": "#93000a",
+                "on-primary": "#003828",
+                "inverse-primary": "#006c50",
+                "surface-container": "#1d2022",
+                "surface-bright": "#37393c",
+                "on-tertiary-fixed": "#171c22",
+                "on-error-container": "#ffdad6",
+                "surface": "#111416",
+                "on-error": "#690005",
+                "on-surface": "#e1e2e5",
+                "primary-fixed": "#36ffc4",
+                "tertiary-container": "#dde1ea",
+                "error": "#ffb4ab",
+                "secondary-fixed-dim": "#c6c6c9",
+                "on-secondary": "#2f3133",
+                "on-secondary-fixed-variant": "#454749",
+                "surface-container-high": "#272a2c",
+                "on-secondary-container": "#b4b5b7",
+                "secondary-fixed": "#e2e2e5",
+                "surface-dim": "#111416",
+                "surface-container-lowest": "#0c0f11",
+                "outline-variant": "#3a4a43",
+                "surface-container-highest": "#323537",
+                "on-background": "#e1e2e5",
+                "primary-fixed-dim": "#00e1ab",
+                "surface-tint": "#00e1ab",
+                "on-secondary-fixed": "#1a1c1e",
+                "secondary": "#c6c6c9",
+                "background": "#111416",
+                "primary-container": "#00ffc2",
+                "primary": "#fbfffa",
+                "surface-variant": "#323537",
+                "inverse-surface": "#e1e2e5",
+                "on-tertiary-container": "#5f646b",
+                "inverse-on-surface": "#2e3133"
+            },
+            fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+    },
+}
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .cinematic-gradient {
+        background: linear-gradient(180deg, rgba(17,20,22,0) 0%, rgba(17,20,22,1) 100%);
+    }
+    .nav-link {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.025em;
+        text-transform: uppercase;
+        color: rgba(251,255,250,0.6);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .nav-link:hover { color: #00e1ab; }
+    .nav-link.active { color: #00e1ab; }
+
+    /* AI showcase animated border */
+    @keyframes borderPulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+    }
+    .ai-border-pulse {
+        animation: borderPulse 3s ease-in-out infinite;
+    }
+
+    /* Grid lines background */
+    .grid-bg {
+        background-image: 
+            linear-gradient(rgba(0, 225, 171, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 225, 171, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+    }
+
+    /* Glowing text */
+    .glow-text {
+        text-shadow: 0 0 60px rgba(0, 225, 171, 0.3);
+    }
+
+    /* Video card hover */
+    .video-card {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s;
+    }
+    .video-card:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(0, 225, 171, 0.15);
+    }
+
+    /* Fade in animation */
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+        animation: fadeUp 0.8s ease forwards;
+    }
+    .fade-up-delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .fade-up-delay-2 { animation-delay: 0.3s; opacity: 0; }
+    .fade-up-delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+    /* Ticker */
+    @keyframes ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .ticker-inner {
+        animation: ticker 25s linear infinite;
+        white-space: nowrap;
+    }
+    .ticker-inner:hover { animation-play-state: paused; }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Stagger child reveals using delay */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Subtle scale-in for cards */
+    .reveal-scale {
+        opacity: 0;
+        transform: scale(0.96) translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal-scale.is-visible {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    /* Counter base styling */
+    .counter { display: inline-block; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.96) translateY(20px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.is-visible { opacity: 1; transform: scale(1) translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .course-card { transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s, border-color 0.4s; }
+    .course-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,225,171,0.12); }
+    .course-card:hover .course-thumb img { transform: scale(1.05); }
+    .course-thumb img { transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+</style>
+<!-- ─── CONSENT-GATED TRACKING ───
+     Pixels do NOT fire on load. They are loaded only after the user
+     grants "marketing" consent via the cookie banner below. -->
+<script>
+window.AdV_Consent = { analytics: false, marketing: false };
+
+// ── Marketing: Meta Pixel + TikTok Pixel ──
+function loadMarketingPixels() {
+    if (window.AdV_marketingLoaded) return;
+    window.AdV_marketingLoaded = true;
+
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2076122999672142');
+    fbq('track', 'PageView');
+
+    // TikTok Pixel
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D80VQNRC77UCEH8TB2I0');
+      ttq.page();
+    }(window, document, 'ttq');
+
+    // Google Ads (gtag.js)
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-971316963';
+    document.head.appendChild(gtagScript);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'AW-971316963');
+
+    window.AdV_Consent.marketing = true;
+}
+
+// ── Analytics: placeholder for future trackers (e.g. Google Analytics) ──
+function loadAnalytics() {
+    if (window.AdV_analyticsLoaded) return;
+    window.AdV_analyticsLoaded = true;
+    window.AdV_Consent.analytics = true;
+    // No analytics tools wired yet — add Google Analytics etc. here when needed.
+}
+
+// Safe no-op stub for ttq only. We deliberately do NOT stub fbq —
+// the official Meta snippet defines its own fbq and pre-stubbing triggers
+// its "if(f.fbq)return" guard, blocking real initialization.
+window.ttq = window.ttq || { track: function(){}, page: function(){} };
+
+// Apply stored consent immediately on load (before banner shows)
+(function applyStoredConsent() {
+    try {
+        var saved = JSON.parse(localStorage.getItem('adv_cookie_consent') || 'null');
+        if (saved) {
+            if (saved.marketing) loadMarketingPixels();
+            if (saved.analytics) loadAnalytics();
+        }
+    } catch (e) {}
+})();
+</script>
+<!-- End consent-gated tracking -->
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#111416]/80 backdrop-blur-xl border-b border-outline-variant/10">
+    <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+        <a href="/index.html" class="text-2xl font-bold tracking-tighter text-[#fbfffa] font-headline" style="text-decoration:none;">Academia de Video</a>
+        <div class="hidden md:flex gap-8 items-center">
+            <a class="nav-link" href="/index.html">HOME</a>
+            <a class="nav-link" href="/despre-noi.html">DESPRE NOI</a>
+            <a class="nav-link" href="/cursuri.html">CURSURI</a>
+            <a class="nav-link" href="/blog.html">BLOG</a>
+            <a class="nav-link active" href="/consultanta.html">CONSULTANȚĂ</a>
+        </div>
+        <a class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm tracking-wide transition-all active:scale-95 hover:bg-primary-fixed-dim inline-block hidden md:inline-block"
+           href="https://wa.me/40750209791?text=Salut%21%20Sunt%20interesat%20de%20consultan%C8%9Ba%20AI%20pentru%20firma%20mea." target="_blank" rel="noopener noreferrer">
+            PROGRAMEAZĂ O DISCUȚIE
+        </a>
+        <button id="hamburger" class="md:hidden text-primary" onclick="document.getElementById('mobile-menu').classList.toggle('open')">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+    <div id="mobile-menu" class="flex-col bg-[#111416] px-8 py-6 gap-6 border-t border-outline-variant/10">
+        <a class="nav-link text-base" href="/index.html">HOME</a>
+        <a class="nav-link text-base" href="/despre-noi.html">DESPRE NOI</a>
+        <a class="nav-link text-base" href="/cursuri.html">CURSURI</a>
+        <a class="nav-link text-base" href="/blog.html">BLOG</a>
+        <a class="nav-link active text-base" href="/consultanta.html">CONSULTANȚĂ</a>
+        <a class="bg-primary-fixed text-on-primary-fixed px-6 py-3 rounded-md font-bold text-sm tracking-wide text-center"
+           href="https://wa.me/40750209791?text=Salut%21%20Sunt%20interesat%20de%20consultan%C8%9Ba%20AI%20pentru%20firma%20mea." target="_blank" rel="noopener noreferrer">
+            PROGRAMEAZĂ O DISCUȚIE
+        </a>
+    </div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="relative pt-40 pb-20 px-8 overflow-hidden grid-bg">
+    <div class="max-w-5xl mx-auto text-center">
+        <span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold tracking-[0.2em] uppercase mb-6 font-headline">Consultanță AI pentru firme</span>
+        <h1 class="text-4xl md:text-6xl font-headline font-bold leading-[1.1] tracking-tighter text-primary mb-6">Te învăț să economisești timp și bani creând singur <span class="text-primary-fixed-dim">pozele și reclamele firmei tale</span> — cu AI.</h1>
+        <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed font-light mb-10">Fără ședințe foto. Fără agenție. Înveți să transformi o poză făcută cu telefonul într-o imagine de produs de calitate de studio — direct de pe laptopul tău.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://wa.me/40750209791?text=Salut%21%20Sunt%20interesat%20de%20consultan%C8%9Ba%20AI%20pentru%20firma%20mea." target="_blank" rel="noopener noreferrer" class="bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 inline-block">Programează o discuție</a>
+            <a href="#transformari" class="text-on-surface-variant hover:text-primary-fixed transition-colors font-semibold">Vezi transformările ↓</a>
+        </div>
+    </div>
+</section>
+
+<!-- 2. PROBLEMA / COST VECHI -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+    <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Problema</span>
+        <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary mb-6 leading-tight">Pozele bune de produs te costă timp, bani și nervi.</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-10 max-w-2xl mx-auto">O ședință foto înseamnă programări, deplasări și sute de lei de fiecare dată. O agenție îți ia mii de lei pe lună și te ține dependent. Iar pentru fiecare produs nou, o iei de la capăt.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            <div class="rounded-xl border border-outline-variant/20 p-6 bg-surface-container-low">
+                <p class="text-on-surface-variant text-sm uppercase tracking-widest mb-2">Vechiul mod</p>
+                <p class="font-headline font-bold text-3xl text-on-surface-variant/70 mb-1">Ședință foto / agenție</p>
+                <p class="text-on-surface-variant/60">Sute sau mii de lei · zile de așteptare · depinzi de altcineva</p>
+            </div>
+            <div class="rounded-xl border border-primary-fixed/40 p-6 bg-primary-fixed/10">
+                <p class="text-primary-fixed-dim text-sm uppercase tracking-widest mb-2 font-bold">Cu AI, singur</p>
+                <p class="font-headline font-bold text-3xl text-primary-fixed mb-1">Câțiva lei · câteva minute</p>
+                <p class="text-on-surface-variant">De pe laptopul tău · oricând · pentru orice produs</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. TRANSFORMĂRI (before/after) -->
+<section id="transformari" class="py-24 px-8 bg-surface scroll-mt-24">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Transformări reale</span>
+            <h2 class="text-3xl md:text-5xl font-headline font-bold text-primary mb-4 leading-tight">De la poză de telefon <span class="text-primary-fixed-dim">la imagine de studio.</span></h2>
+            <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">Aceleași produse, aceleași poze banale făcute cu telefonul — transformate cu AI. Fără fotograf, fără studio.</p>
+        </div>
+        <div class="space-y-8">
+        <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-5 md:p-7 max-w-4xl mx-auto">
+            <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-5 text-lg">Supliment / Creatină</p>
+            <div class="relative grid grid-cols-2 gap-3 md:gap-5">
+                <div class="relative">
+                    <img src="/images/creatina_before.webp" alt="Poză de telefon a unui borcan de creatină" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
+                    <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Înainte · telefon</span>
+                </div>
+                <div class="relative">
+                    <img src="/images/creatina_gym.webp" alt="Imagine de produs creată cu AI într-un decor de sală" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
+                    <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">După · cu AI</span>
+                </div>
+                <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-4 border-[#111416]">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </span>
+            </div>
+        </div>
+        <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-5 md:p-7 max-w-4xl mx-auto">
+            <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-5 text-lg">Paste / Food</p>
+            <div class="relative grid grid-cols-2 gap-3 md:gap-5">
+                <div class="relative">
+                    <img src="/images/paste_before.webp" alt="Poză de telefon a unei cutii de paste" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
+                    <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Înainte · telefon</span>
+                </div>
+                <div class="relative">
+                    <img src="/images/paste_bucatarie.webp" alt="Imagine de produs creată cu AI într-o bucătărie luminoasă" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
+                    <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">După · cu AI</span>
+                </div>
+                <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-4 border-[#111416]">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </span>
+            </div>
+        </div>
+        <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-5 md:p-7 max-w-4xl mx-auto">
+            <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-5 text-lg">Bomboane de mentă</p>
+            <div class="relative grid grid-cols-2 gap-3 md:gap-5">
+                <div class="relative">
+                    <img src="/images/bomboane_before.webp" alt="Poză de telefon a unui borcan de bomboane" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
+                    <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Înainte · telefon</span>
+                </div>
+                <div class="relative">
+                    <img src="/images/bomboane_studio.webp" alt="Imagine de produs creată cu AI în decor de studio" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
+                    <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">După · cu AI</span>
+                </div>
+                <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-4 border-[#111416]">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </span>
+            </div>
+        </div>
+        </div>
+        <p class="text-center text-on-surface-variant/60 text-sm mt-10 max-w-2xl mx-auto">Toate imaginile din dreapta sunt generate cu AI, pornind de la poza simplă din stânga. Exact asta înveți să faci singur.</p>
+    </div>
+</section>
+
+<!-- 4. CE PRIMEȘTI / CUM DECURGE -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Cum decurge</span>
+            <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary leading-tight">Lucrăm 1-la-1, pe produsele tale reale.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="rounded-xl border border-outline-variant/20 p-7 bg-surface-container-low">
+                <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">person</span>
+                <h3 class="font-headline font-bold text-primary text-xl mb-2">1-la-1, personalizat</h3>
+                <p class="text-on-surface-variant leading-relaxed">Lucrăm direct pe produsele și brandul tău, nu pe exemple generice. Tot ce înveți se aplică imediat în afacerea ta.</p>
+            </div>
+            <div class="rounded-xl border border-outline-variant/20 p-7 bg-surface-container-low">
+                <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">school</span>
+                <h3 class="font-headline font-bold text-primary text-xl mb-2">Înveți tot fluxul</h3>
+                <p class="text-on-surface-variant leading-relaxed">De la poza făcută cu telefonul, la prompt, la imaginea finală gata de postat. Pleci cu un proces pe care îl poți repeta singur.</p>
+            </div>
+            <div class="rounded-xl border border-outline-variant/20 p-7 bg-surface-container-low">
+                <span class="material-symbols-outlined text-primary-fixed text-4xl mb-4">photo_library</span>
+                <h3 class="font-headline font-bold text-primary text-xl mb-2">Pleci cu rezultate</h3>
+                <p class="text-on-surface-variant leading-relaxed">Încă din prima sesiune îți creezi primul set de imagini de produs, gata de folosit pe site, magazin online sau social media.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. PENTRU CINE E / NU E -->
+<section class="py-24 px-8 bg-surface">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Pentru cine e</span>
+            <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary leading-tight">Să vedem dacă ni se potrivește.</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-primary-fixed/30 p-7 bg-primary-fixed/[0.06]">
+                <p class="font-headline font-bold text-primary-fixed-dim uppercase tracking-wide mb-5">E pentru tine dacă…</p>
+                <ul class="space-y-3 text-on-surface">
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Ai o firmă sau un magazin online și ai nevoie de poze de produs des.</li>
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Vrei autonomie — să le faci singur, nu să depinzi de altcineva.</li>
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Te-ai săturat să platești sute de lei pe fiecare set de poze.</li>
+                </ul>
+            </div>
+            <div class="rounded-2xl border border-outline-variant/20 p-7 bg-surface-container-low">
+                <p class="font-headline font-bold text-on-surface-variant uppercase tracking-wide mb-5">NU e pentru tine dacă…</p>
+                <ul class="space-y-3 text-on-surface-variant">
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-outline">close</span> Vrei să externalizezi complet și să nu înveți nimic.</li>
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-outline">close</span> Cauți un buton magic care face totul fără niciun efort din partea ta.</li>
+                    <li class="flex gap-3"><span class="material-symbols-outlined text-outline">close</span> Nu ai produse fizice de promovat.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. CINE SUNT (autoritate) -->
+<section class="py-24 px-8 bg-surface-container-lowest">
+    <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Cine te învață</span>
+        <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary mb-6 leading-tight">Nu înveți de la cineva care doar a citit despre AI.</h2>
+        <p class="text-on-surface-variant text-lg leading-relaxed mb-10 max-w-2xl mx-auto">Lucrez în producție video de peste 10 ani, cu peste 200 de clienți din Europa, Asia și SUA. Reclamele și imaginile AI pe care le-ai văzut pe acest site sunt făcute de mine — aceleași tehnici pe care te învăț să le folosești.</p>
+        <div class="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <div><p class="font-headline font-bold text-4xl text-primary-fixed">10+</p><p class="text-on-surface-variant text-sm uppercase tracking-wider mt-1">ani experiență</p></div>
+            <div><p class="font-headline font-bold text-4xl text-primary-fixed">200+</p><p class="text-on-surface-variant text-sm uppercase tracking-wider mt-1">clienți</p></div>
+            <div><p class="font-headline font-bold text-4xl text-primary-fixed">3 ţări</p><p class="text-on-surface-variant text-sm uppercase tracking-wider mt-1">continente</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="py-24 px-8 bg-surface">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Întrebări frecvente</span>
+            <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary leading-tight">Probabil te întrebi…</h2>
+        </div>
+        <div class="space-y-4">
+            <details class="group border border-outline-variant/20 rounded-xl bg-surface-container-low overflow-hidden">
+                <summary class="cursor-pointer list-none px-6 py-5 flex justify-between items-center gap-4 text-primary font-semibold">
+                    <span>Trebuie să mă pricep la tehnologie?</span>
+                    <span class="material-symbols-outlined text-primary-fixed transition-transform group-open:rotate-45">add</span>
+                </summary>
+                <p class="px-6 pb-6 text-on-surface-variant leading-relaxed">Nu. Lucrăm împreună, pas cu pas, pe produsele tale reale. Dacă știi să faci o poză cu telefonul și să folosești un laptop, e suficient ca să începi.</p>
+            </details>
+            <details class="group border border-outline-variant/20 rounded-xl bg-surface-container-low overflow-hidden">
+                <summary class="cursor-pointer list-none px-6 py-5 flex justify-between items-center gap-4 text-primary font-semibold">
+                    <span>De ce să învăț eu, în loc să plătesc o agenție?</span>
+                    <span class="material-symbols-outlined text-primary-fixed transition-transform group-open:rotate-45">add</span>
+                </summary>
+                <p class="px-6 pb-6 text-on-surface-variant leading-relaxed">O agenție îți face poze o dată și te taxează de fiecare dată. Tu rămâi dependent. Aici înveți să-ți creezi singur pozele, oricând ai nevoie, pentru orice produs nou — fără să mai plătești pe nimeni.</p>
+            </details>
+            <details class="group border border-outline-variant/20 rounded-xl bg-surface-container-low overflow-hidden">
+                <summary class="cursor-pointer list-none px-6 py-5 flex justify-between items-center gap-4 text-primary font-semibold">
+                    <span>Funcționează pentru nișa / produsul meu?</span>
+                    <span class="material-symbols-outlined text-primary-fixed transition-transform group-open:rotate-45">add</span>
+                </summary>
+                <p class="px-6 pb-6 text-on-surface-variant leading-relaxed">În marea majoritate a cazurilor, da — de la suplimente și alimente la cosmetice, băuturi sau produse de uz casnic. În discuția inițială îți spun direct dacă produsul tău se pretează bine.</p>
+            </details>
+            <details class="group border border-outline-variant/20 rounded-xl bg-surface-container-low overflow-hidden">
+                <summary class="cursor-pointer list-none px-6 py-5 flex justify-between items-center gap-4 text-primary font-semibold">
+                    <span>Cât durează până văd primul rezultat?</span>
+                    <span class="material-symbols-outlined text-primary-fixed transition-transform group-open:rotate-45">add</span>
+                </summary>
+                <p class="px-6 pb-6 text-on-surface-variant leading-relaxed">Chiar din prima sesiune pleci cu primul set de imagini gata de folosit. Restul e exersare — cu cât generezi mai mult, cu atât devii mai bun.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- 8. CTA FINAL -->
+<section class="py-28 px-8 bg-surface-container-lowest grid-bg">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-5xl font-headline font-bold text-primary mb-6 leading-tight">Hai să vedem ce poate face AI-ul <span class="text-primary-fixed-dim">pentru firma ta.</span></h2>
+        <p class="text-on-surface-variant text-lg mb-10 max-w-xl mx-auto leading-relaxed">Programează o discuție scurtă, fără obligații. Îți spun direct dacă produsele tale se pretează și cum ar arăta colaborarea.</p>
+        <a href="https://wa.me/40750209791?text=Salut%21%20Sunt%20interesat%20de%20consultan%C8%9Ba%20AI%20pentru%20firma%20mea." target="_blank" rel="noopener noreferrer" class="bg-primary-fixed text-on-primary-fixed px-12 py-5 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 inline-block">Programează o discuție pe WhatsApp</a>
+    </div>
+</section>
+
+<footer class="bg-[#191c1e]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start px-12 py-16 w-full gap-12 border-t border-[#3a4a43]/20">
+            <div class="max-w-sm">
+                <div class="text-xl font-bold text-[#fbfffa] font-headline mb-4 uppercase tracking-tighter">Academia de Video</div>
+                <p class="text-[#fbfffa]/40 font-body text-sm leading-relaxed mb-6">Educație practică de video și AI în limba română. Creăm comunitatea care definește standardele producției video moderne în România.</p>
+                <p class="text-[#fbfffa]/60 text-sm font-headline font-bold uppercase tracking-[0.15em] mb-3">Conturi social media:</p>
+                <div class="flex gap-3">
+                    <a class="group w-11 h-11 rounded-lg border border-outline-variant flex items-center justify-center text-primary hover:border-primary-fixed-dim hover:bg-primary-fixed/5 transition-all" href="https://www.tiktok.com/@academiadevideo?_r=1&_t=ZN-97CQv8myZk7" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg class="w-5 h-5 fill-current group-hover:text-primary-fixed-dim transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.42a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.85z"/>
+                        </svg>
+                    </a>
+                    <a class="group w-11 h-11 rounded-lg border border-outline-variant flex items-center justify-center text-primary hover:border-primary-fixed-dim hover:bg-primary-fixed/5 transition-all" href="https://www.youtube.com/@castigacuai" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <svg class="w-5 h-5 fill-current group-hover:text-primary-fixed-dim transition-colors" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="flex gap-16">
+                <div>
+                    <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Pagini</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="/index.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Home</a>
+                        <a href="/despre-noi.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Despre noi</a>
+                        <a href="/cursuri.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Cursuri</a>
+                        <a href="/blog.html" class="text-[#fbfffa]/40 hover:text-[#00e1ab] text-sm transition-colors" style="text-decoration:none;">Blog</a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-auto">
+                <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Newsletter</h4>
+                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește tips & tricks săptămânale de AI video direct în inbox.</p>
+                <div class="flex gap-2">
+                    <input class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full md:w-64" placeholder="Email-ul tău" type="email">
+                    <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="px-12 py-8 border-t border-[#3a4a43]/10 text-center md:text-left">
+            <span class="text-[#fbfffa]/40 text-xs uppercase tracking-widest">© 2026 Academia de Video. Toate drepturile rezervate.</span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
