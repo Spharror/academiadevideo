@@ -471,59 +471,65 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <div class="text-center mb-14">
             <span class="inline-block text-primary-fixed-dim font-headline font-bold text-sm tracking-[0.2em] uppercase mb-4">Transformări reale</span>
             <h2 class="text-3xl md:text-5xl font-headline font-bold text-primary mb-4 leading-tight">De la poză de telefon <span class="text-primary-fixed-dim">la imagine de studio.</span></h2>
-            <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">Aceleași produse, aceleași poze banale făcute cu telefonul — transformate cu AI. Fără fotograf, fără studio.</p>
+            <p class="text-on-surface-variant text-lg max-w-2xl mx-auto leading-relaxed">Trage de cursor pe fiecare imagine — vezi exact transformarea. Aceleași produse, aceleași poze banale făcute cu telefonul — transformate cu AI.</p>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
+            <div class="ba-card rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
                 <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-4 text-base">Supliment / Creatină</p>
-                <div class="relative grid grid-cols-2 gap-2 md:gap-3">
-                    <div class="relative">
-                        <img src="/images/creatina_before.webp" alt="Poză de telefon a unui borcan de creatină" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
-                        <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Înainte</span>
+                <div class="ba-slider relative w-full aspect-[3/4] rounded-lg overflow-hidden select-none touch-none cursor-ew-resize" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Supliment / Creatină — trage pentru a vedea transformarea">
+                    <!-- AFTER (base layer, full image) -->
+                    <img src="/images/creatina_gym.webp" alt="Imagine de produs creată cu AI într-un decor de sală" loading="lazy" draggable="false" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    <span class="absolute top-2 right-2 z-20 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Cu AI</span>
+                    <!-- BEFORE (clipped layer on top) -->
+                    <img src="/images/creatina_before.webp" alt="Poză de telefon a unui borcan de creatină" loading="lazy" draggable="false" class="ba-before-img absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 50% 0 0);">
+                    <span class="ba-before-label absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded" style="clip-path: inset(0 50% 0 0);">Înainte</span>
+                    <!-- Handle line + grip -->
+                    <div class="ba-handle absolute top-0 bottom-0 pointer-events-none" style="left:50%; transform:translateX(-50%);">
+                        <div class="w-[2px] h-full bg-white/95 shadow-[0_0_8px_rgba(0,0,0,0.45)]"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border-[3px] border-[#111416] shadow-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#111416] text-lg" style="transform:rotate(90deg);">unfold_more</span>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <img src="/images/creatina_gym.webp" alt="Imagine de produs creată cu AI într-un decor de sală" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
-                        <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Cu AI</span>
-                    </div>
-                    <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-[3px] border-[#111416]">
-                        <span class="material-symbols-outlined text-base">arrow_forward</span>
-                    </span>
                 </div>
             </div>
-            <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
+            <div class="ba-card rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
                 <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-4 text-base">Paste / Food</p>
-                <div class="relative grid grid-cols-2 gap-2 md:gap-3">
-                    <div class="relative">
-                        <img src="/images/paste_before.webp" alt="Poză de telefon a unei cutii de paste" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
-                        <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Înainte</span>
+                <div class="ba-slider relative w-full aspect-[3/4] rounded-lg overflow-hidden select-none touch-none cursor-ew-resize" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Paste / Food — trage pentru a vedea transformarea">
+                    <!-- AFTER (base layer, full image) -->
+                    <img src="/images/paste_bucatarie.webp" alt="Imagine de produs creată cu AI într-o bucătărie luminoasă" loading="lazy" draggable="false" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    <span class="absolute top-2 right-2 z-20 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Cu AI</span>
+                    <!-- BEFORE (clipped layer on top) -->
+                    <img src="/images/paste_before.webp" alt="Poză de telefon a unei cutii de paste" loading="lazy" draggable="false" class="ba-before-img absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 50% 0 0);">
+                    <span class="ba-before-label absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded" style="clip-path: inset(0 50% 0 0);">Înainte</span>
+                    <!-- Handle line + grip -->
+                    <div class="ba-handle absolute top-0 bottom-0 pointer-events-none" style="left:50%; transform:translateX(-50%);">
+                        <div class="w-[2px] h-full bg-white/95 shadow-[0_0_8px_rgba(0,0,0,0.45)]"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border-[3px] border-[#111416] shadow-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#111416] text-lg" style="transform:rotate(90deg);">unfold_more</span>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <img src="/images/paste_bucatarie.webp" alt="Imagine de produs creată cu AI într-o bucătărie luminoasă" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
-                        <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Cu AI</span>
-                    </div>
-                    <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-[3px] border-[#111416]">
-                        <span class="material-symbols-outlined text-base">arrow_forward</span>
-                    </span>
                 </div>
             </div>
-            <div class="rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
+            <div class="ba-card rounded-2xl border border-outline-variant/20 bg-surface-container-low p-4 md:p-5">
                 <p class="text-center font-headline font-bold text-primary uppercase tracking-wide mb-4 text-base">Bomboane de mentă</p>
-                <div class="relative grid grid-cols-2 gap-2 md:gap-3">
-                    <div class="relative">
-                        <img src="/images/bomboane_before.webp" alt="Poză de telefon a unui borcan de bomboane" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-outline-variant/20">
-                        <span class="absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Înainte</span>
+                <div class="ba-slider relative w-full aspect-[3/4] rounded-lg overflow-hidden select-none touch-none cursor-ew-resize" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-label="Bomboane de mentă — trage pentru a vedea transformarea">
+                    <!-- AFTER (base layer, full image) -->
+                    <img src="/images/bomboane_studio.webp" alt="Imagine de produs creată cu AI în decor de studio" loading="lazy" draggable="false" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    <span class="absolute top-2 right-2 z-20 bg-primary-fixed text-on-primary-fixed text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">Cu AI</span>
+                    <!-- BEFORE (clipped layer on top) -->
+                    <img src="/images/bomboane_before.webp" alt="Poză de telefon a unui borcan de bomboane" loading="lazy" draggable="false" class="ba-before-img absolute inset-0 w-full h-full object-cover pointer-events-none" style="clip-path: inset(0 50% 0 0);">
+                    <span class="ba-before-label absolute top-2 left-2 bg-surface-container-highest/90 text-on-surface-variant text-[10px] md:text-xs font-bold uppercase tracking-wider px-2 py-1 rounded" style="clip-path: inset(0 50% 0 0);">Înainte</span>
+                    <!-- Handle line + grip -->
+                    <div class="ba-handle absolute top-0 bottom-0 pointer-events-none" style="left:50%; transform:translateX(-50%);">
+                        <div class="w-[2px] h-full bg-white/95 shadow-[0_0_8px_rgba(0,0,0,0.45)]"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border-[3px] border-[#111416] shadow-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#111416] text-lg" style="transform:rotate(90deg);">unfold_more</span>
+                        </div>
                     </div>
-                    <div class="relative">
-                        <img src="/images/bomboane_studio.webp" alt="Imagine de produs creată cu AI în decor de studio" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-lg border border-primary-fixed/30">
-                        <span class="absolute top-2 left-2 bg-primary-fixed text-on-primary-fixed text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded">Cu AI</span>
-                    </div>
-                    <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center shadow-lg border-[3px] border-[#111416]">
-                        <span class="material-symbols-outlined text-base">arrow_forward</span>
-                    </span>
                 </div>
             </div>
         </div>
-        <p class="text-center text-on-surface-variant/60 text-sm mt-10 max-w-2xl mx-auto">Toate imaginile din dreapta sunt generate cu AI, pornind de la poza simplă din stânga. Exact asta înveți să faci singur în comunitate.</p>
+        <p class="text-center text-on-surface-variant/60 text-sm mt-10 max-w-2xl mx-auto">Toate imaginile „cu AI" sunt generate pornind de la poza simplă din partea „Înainte". Exact asta înveți să faci singur în comunitate.</p>
     </div>
 </section>
 
@@ -1413,6 +1419,78 @@ document.querySelectorAll('.video-card[data-vid]').forEach(function(card){
 });
 document.addEventListener('click', function(e){ if(e.target && e.target.hasAttribute && e.target.hasAttribute('data-close')) closeVideo(); });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeVideo(); });
+</script>
+<style>
+  .ba-slider:focus-visible{outline:2px solid #00e1ab;outline-offset:3px;}
+    .ba-slider.dragging{cursor:grabbing;}
+  .ba-slider.dragging *{cursor:grabbing;}
+  @keyframes baHint{0%,100%{transform:translateX(-50%);}30%{transform:translateX(-65%);}60%{transform:translateX(-35%);}}
+  .ba-slider.hint .ba-handle{animation:baHint 1.6s ease-in-out 1;}
+  </style>
+<script>
+(function(){
+  function clamp(v,a,b){return v<a?a:(v>b?b:v);}
+  function setPos(slider, pct){
+    pct = clamp(pct, 0, 100);
+    var img = slider.querySelector('.ba-before-img');
+    var label = slider.querySelector('.ba-before-label');
+    var handle = slider.querySelector('.ba-handle');
+    var clip = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    if(img){ img.style.clipPath = clip; img.style.webkitClipPath = clip; }
+    if(label){ label.style.clipPath = clip; label.style.webkitClipPath = clip; }
+    if(handle) handle.style.left = pct + '%';
+    slider.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  function pctFromEvent(slider, clientX){
+    var r = slider.getBoundingClientRect();
+    return ((clientX - r.left) / r.width) * 100;
+  }
+  document.querySelectorAll('.ba-slider').forEach(function(slider){
+    var dragging = false;
+    function start(e){ dragging = true; slider.classList.add('dragging'); move(e); }
+    function move(e){
+      if(!dragging) return;
+      var x = (e.touches ? e.touches[0].clientX : e.clientX);
+      setPos(slider, pctFromEvent(slider, x));
+      if(e.cancelable) e.preventDefault();
+    }
+    function end(){ dragging = false; slider.classList.remove('dragging'); }
+    slider.addEventListener('mousedown', start);
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    slider.addEventListener('touchstart', start, {passive:true});
+    window.addEventListener('touchmove', move, {passive:false});
+    window.addEventListener('touchend', end);
+    slider.addEventListener('click', function(e){
+      // single-tap reposition (in case the user just taps without dragging)
+      setPos(slider, pctFromEvent(slider, e.clientX));
+    });
+    slider.addEventListener('keydown', function(e){
+      var cur = parseFloat(slider.getAttribute('aria-valuenow')) || 50;
+      if(e.key==='ArrowLeft'){ setPos(slider, cur-5); e.preventDefault(); }
+      else if(e.key==='ArrowRight'){ setPos(slider, cur+5); e.preventDefault(); }
+      else if(e.key==='Home'){ setPos(slider, 0); e.preventDefault(); }
+      else if(e.key==='End'){ setPos(slider, 100); e.preventDefault(); }
+    });
+  });
+  // Hint animation when section enters viewport — first time only
+  var hinted = false;
+  var section = document.querySelector('.ba-slider');
+  if(section && 'IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting && !hinted){
+          hinted = true;
+          document.querySelectorAll('.ba-slider').forEach(function(s, i){
+            setTimeout(function(){ s.classList.add('hint'); setTimeout(function(){ s.classList.remove('hint'); }, 1800); }, i*250);
+          });
+          obs.disconnect();
+        }
+      });
+    }, {threshold:0.35});
+    obs.observe(section);
+  }
+})();
 </script>
 </body>
 </html>
