@@ -726,8 +726,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                     <span class="text-xl text-on-surface-variant">/lună</span>
                 </div>
                 <p id="pret-nota" class="text-on-surface-variant text-sm mb-3">Aprox., TVA inclus · 21,78 $/lună la plată</p>
-                <p id="pret-anual" class="text-primary text-base font-semibold mb-3">sau aprox. 980 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 217,80 $/an la plată</span></p>
-                <p id="pret-standard" class="text-on-surface-variant text-sm mb-8">După primii 100 de membri, prețul devine <span class="text-primary font-semibold">147 lei/lună</span>. Al tău rămâne 97 lei cât timp ești membru.</p>
+                <p id="pret-anual" class="text-primary text-base font-semibold mb-8">sau aprox. 980 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 217,80 $/an la plată</span></p>
 
                 <!-- Founder spots -->
                 <div id="locuri-box" class="bg-surface-container-lowest/60 rounded-xl border border-outline-variant/20 p-6 mb-8">
@@ -736,6 +735,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                     <div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
                         <div id="locuri-bar" class="h-full bg-primary-fixed-dim rounded-full" style="width:0%;"></div>
                     </div>
+                    <p id="pret-standard" class="text-on-surface-variant text-sm leading-relaxed mt-5">După primii 100 de membri, prețul devine <span class="text-primary font-semibold">147 lei/lună</span>. Al tău rămâne 97 lei cât timp ești membru.</p>
                 </div>
 
                 <!-- CTA -->
@@ -771,8 +771,6 @@ var LOCURI_OCUPATE = 50;
         el('pret-mare').textContent = '147 lei';
         el('pret-nota').textContent = 'Aprox., TVA inclus · 32,67 $/lună la plată';
         el('pret-anual').innerHTML = 'sau aprox. 1.470 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 326,70 $/an la plată</span>';
-        el('pret-anual').classList.replace('mb-3', 'mb-8');
-        el('pret-standard').style.display = 'none';
         el('locuri-box').style.display = 'none';
     }
 })();
