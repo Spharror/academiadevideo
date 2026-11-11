@@ -716,7 +716,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
         <div id="oferta-card" class="reveal-scale rounded-2xl border border-primary-fixed/30 overflow-hidden relative scroll-mt-28" style="background: linear-gradient(135deg, rgba(0,225,171,0.12) 0%, rgba(0,225,171,0.02) 100%);">
             <!-- Offer banner -->
             <div id="oferta-banner" class="bg-primary-fixed text-on-primary-fixed text-center py-3 font-headline font-bold text-sm uppercase tracking-widest">
-                ⚡ Preț de fondator — primii 100 de membri
+                ⚡ Preț de lansare — primii 100 de membri
             </div>
 
             <div class="p-10 text-center">
@@ -725,7 +725,8 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
                     <span id="pret-mare" class="text-6xl md:text-7xl font-headline font-bold text-primary-fixed-dim glow-text">97 lei</span>
                     <span class="text-xl text-on-surface-variant">/lună</span>
                 </div>
-                <p id="pret-nota" class="text-on-surface-variant text-sm mb-2">Aprox., TVA inclus · 21,78 $/lună la plată</p>
+                <p id="pret-nota" class="text-on-surface-variant text-sm mb-3">Aprox., TVA inclus · 21,78 $/lună la plată</p>
+                <p id="pret-anual" class="text-primary text-base font-semibold mb-3">sau aprox. 980 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 217,80 $/an la plată</span></p>
                 <p id="pret-standard" class="text-on-surface-variant text-sm mb-8">După primii 100 de membri, prețul devine <span class="text-primary font-semibold">147 lei/lună</span>. Al tău rămâne 97 lei cât timp ești membru.</p>
 
                 <!-- Founder spots -->
@@ -751,7 +752,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
 </section>
 
 <script>
-// ─── LOCURI LA PREȚUL DE FONDATOR ───
+// ─── LOCURI LA PREȚUL DE LANSARE ───
 // Actualizează manual numărul de mai jos pe măsură ce intră membri noi.
 // Când ajunge la 100, cardul trece singur pe prețul standard.
 var LOCURI_OCUPATE = 50;
@@ -769,7 +770,8 @@ var LOCURI_OCUPATE = 50;
         el('oferta-banner').textContent = 'Acces complet la cursuri și comunitate';
         el('pret-mare').textContent = '147 lei';
         el('pret-nota').textContent = 'Aprox., TVA inclus · 32,67 $/lună la plată';
-        el('pret-nota').classList.replace('mb-2', 'mb-8');
+        el('pret-anual').innerHTML = 'sau aprox. 1.470 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 326,70 $/an la plată</span>';
+        el('pret-anual').classList.replace('mb-3', 'mb-8');
         el('pret-standard').style.display = 'none';
         el('locuri-box').style.display = 'none';
     }
