@@ -704,51 +704,36 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
     <div class="relative max-w-2xl mx-auto px-8">
 
         <div class="reveal text-center mb-10">
-            <span class="inline-block px-4 py-2 bg-secondary-container text-[#00e1ab] rounded-full text-sm font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
+            <span id="oferta-eyebrow" class="inline-block px-4 py-2 bg-secondary-container text-[#00e1ab] rounded-full text-sm font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
                 OFERTĂ DE LANSARE
             </span>
-            <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary tracking-tight">
-                Intră azi și prinde locul la <span class="text-primary-fixed-dim">preț redus.</span>
+            <h2 id="oferta-titlu" class="text-3xl md:text-4xl font-headline font-bold text-primary tracking-tight">
+                Intră printre primii 100 și păstrezi <span class="text-primary-fixed-dim">prețul pe viață.</span>
             </h2>
         </div>
 
         <!-- Price card -->
         <div id="oferta-card" class="reveal-scale rounded-2xl border border-primary-fixed/30 overflow-hidden relative scroll-mt-28" style="background: linear-gradient(135deg, rgba(0,225,171,0.12) 0%, rgba(0,225,171,0.02) 100%);">
-            <!-- Discount banner -->
-            <div class="bg-primary-fixed text-on-primary-fixed text-center py-3 font-headline font-bold text-sm uppercase tracking-widest">
-                ⚡ Reducere 47% — doar azi
+            <!-- Offer banner -->
+            <div id="oferta-banner" class="bg-primary-fixed text-on-primary-fixed text-center py-3 font-headline font-bold text-sm uppercase tracking-widest">
+                ⚡ Preț de fondator — primii 100 de membri
             </div>
 
             <div class="p-10 text-center">
                 <!-- Prices -->
-                <div class="flex items-center justify-center gap-4 mb-2">
-                    <span class="text-2xl text-on-surface-variant line-through opacity-50 font-headline">137 lei</span>
-                    <span class="bg-primary-fixed/15 text-primary-fixed-dim text-xs font-bold px-3 py-1 rounded-full border border-primary-fixed/30 uppercase tracking-wider">-47%</span>
-                </div>
-                <div class="flex items-baseline justify-center gap-2 mb-1">
-                    <span class="text-6xl md:text-7xl font-headline font-bold text-primary-fixed-dim glow-text">72 lei</span>
+                <div class="flex items-baseline justify-center gap-2 mb-2">
+                    <span id="pret-mare" class="text-6xl md:text-7xl font-headline font-bold text-primary-fixed-dim glow-text">97 lei</span>
                     <span class="text-xl text-on-surface-variant">/lună</span>
                 </div>
-                <p class="text-on-surface-variant text-sm mb-8">Mai puțin decât un prânz în oraș.</p>
+                <p id="pret-nota" class="text-on-surface-variant text-sm mb-2">Aprox., TVA inclus · 21,78 $/lună la plată</p>
+                <p id="pret-standard" class="text-on-surface-variant text-sm mb-8">După primii 100 de membri, prețul devine <span class="text-primary font-semibold">147 lei/lună</span>. Al tău rămâne 97 lei cât timp ești membru.</p>
 
-                <!-- Timer -->
-                <div class="bg-surface-container-lowest/60 rounded-xl border border-outline-variant/20 p-6 mb-8">
-                    <p class="text-on-surface-variant text-xs uppercase tracking-[0.2em] font-bold font-headline mb-4">Oferta expiră în:</p>
-                    <div class="flex items-center justify-center gap-3" id="countdown">
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl md:text-4xl font-headline font-bold text-primary" id="cd-hours">00</span>
-                            <span class="text-on-surface-variant text-[10px] uppercase tracking-widest mt-1">Ore</span>
-                        </div>
-                        <span class="text-3xl font-headline font-bold text-primary-fixed-dim/40 -mt-4">:</span>
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl md:text-4xl font-headline font-bold text-primary" id="cd-minutes">00</span>
-                            <span class="text-on-surface-variant text-[10px] uppercase tracking-widest mt-1">Minute</span>
-                        </div>
-                        <span class="text-3xl font-headline font-bold text-primary-fixed-dim/40 -mt-4">:</span>
-                        <div class="flex flex-col items-center">
-                            <span class="text-3xl md:text-4xl font-headline font-bold text-primary" id="cd-seconds">00</span>
-                            <span class="text-on-surface-variant text-[10px] uppercase tracking-widest mt-1">Secunde</span>
-                        </div>
+                <!-- Founder spots -->
+                <div id="locuri-box" class="bg-surface-container-lowest/60 rounded-xl border border-outline-variant/20 p-6 mb-8">
+                    <p class="text-on-surface-variant text-xs uppercase tracking-[0.2em] font-bold font-headline mb-3">Locuri rămase la prețul acesta</p>
+                    <p class="font-headline font-bold text-primary mb-4"><span id="locuri-ramase" class="text-3xl md:text-4xl">100</span><span class="text-on-surface-variant text-lg"> din 100</span></p>
+                    <div class="h-2 rounded-full bg-surface-container-highest overflow-hidden">
+                        <div id="locuri-bar" class="h-full bg-primary-fixed-dim rounded-full" style="width:0%;"></div>
                     </div>
                 </div>
 
@@ -766,22 +751,29 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
 </section>
 
 <script>
-function updateCountdown() {
-    const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(24, 0, 0, 0); // next midnight
-    const diff = midnight - now;
-
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// ─── LOCURI LA PREȚUL DE FONDATOR ───
+// Actualizează manual numărul de mai jos pe măsură ce intră membri noi.
+// Când ajunge la 100, cardul trece singur pe prețul standard.
+var LOCURI_OCUPATE = 50;
+(function () {
+    var TOTAL = 100;
+    var ocupate = Math.max(0, Math.min(TOTAL, LOCURI_OCUPATE));
+    var ramase = TOTAL - ocupate;
+    var el = function (id) { return document.getElementById(id); };
+    if (ramase > 0) {
+        el('locuri-ramase').textContent = ramase;
+        el('locuri-bar').style.width = (ocupate / TOTAL * 100) + '%';
+    } else {
+        el('oferta-eyebrow').textContent = 'ABONAMENT';
+        el('oferta-titlu').innerHTML = 'Intră în comunitate și fă-ți <span class="text-primary-fixed-dim">prima reclamă cu AI.</span>';
+        el('oferta-banner').textContent = 'Acces complet la cursuri și comunitate';
+        el('pret-mare').textContent = '147 lei';
+        el('pret-nota').textContent = 'Aprox., TVA inclus · 32,67 $/lună la plată';
+        el('pret-nota').classList.replace('mb-2', 'mb-8');
+        el('pret-standard').style.display = 'none';
+        el('locuri-box').style.display = 'none';
+    }
+})();
 </script>
 
 <!-- FOUNDERS SECTION -->
