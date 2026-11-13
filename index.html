@@ -776,6 +776,39 @@ var LOCURI_OCUPATE = 50;
 })();
 </script>
 
+<!-- LEAD MAGNET: LECȚIE GRATUITĂ -->
+<section class="py-24 bg-surface-container-lowest relative overflow-hidden scroll-mt-28" id="lectie-gratuita">
+    <div class="relative max-w-3xl mx-auto px-8">
+        <div class="reveal rounded-2xl border border-outline-variant/30 bg-surface-container-low p-8 md:p-12">
+            <div class="text-center mb-8">
+                <span class="inline-block px-4 py-2 bg-secondary-container text-[#00e1ab] rounded-full text-sm font-bold tracking-[0.2em] uppercase mb-6 font-headline border border-[#00e1ab]/20">
+                    Lecție gratuită
+                </span>
+                <h2 class="text-3xl md:text-4xl font-headline font-bold text-primary tracking-tight mb-4">
+                    Nu ești încă sigur? <span class="text-primary-fixed-dim">Încearcă întâi gratuit.</span>
+                </h2>
+                <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl mx-auto">
+                    Primești pe email lecția <span class="text-primary font-semibold">„Prima ta imagine de produs cu AI”</span>: pornești de la o poză făcută cu telefonul și ajungi la o imagine de studio, pas cu pas.
+                </p>
+            </div>
+            <form class="adv-ml-form max-w-xl mx-auto" data-sursa="lectie_gratuita" novalidate>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input name="fields[name]" type="text" autocomplete="given-name" placeholder="Prenumele tău" class="flex-1 bg-surface-container-highest border-none rounded-md px-4 py-4 text-primary placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary-fixed">
+                    <input name="fields[email]" type="email" required autocomplete="email" placeholder="Email-ul tău" class="flex-1 bg-surface-container-highest border-none rounded-md px-4 py-4 text-primary placeholder:text-on-surface-variant/60 focus:ring-2 focus:ring-primary-fixed">
+                </div>
+                <label class="flex items-start gap-3 mt-4 text-left cursor-pointer">
+                    <input name="acord" type="checkbox" required class="mt-1 rounded border-outline-variant bg-surface-container-highest text-primary-fixed-dim focus:ring-primary-fixed">
+                    <span class="text-on-surface-variant text-sm leading-relaxed">Sunt de acord să primesc pe email lecția și alte materiale de la Academia de Video. Mă pot dezabona oricând, dintr-un click.</span>
+                </label>
+                <button type="submit" class="w-full mt-6 bg-primary-fixed text-on-primary-fixed px-10 py-4 rounded-md font-bold text-lg tracking-tight hover:bg-primary-fixed-dim transition-all active:scale-95 uppercase disabled:opacity-60">
+                    Trimite-mi lecția gratuită
+                </button>
+                <p class="adv-ml-error hidden text-error text-sm text-center mt-4" role="alert"></p>
+            </form>
+        </div>
+    </div>
+</section>
+
 <!-- FOUNDERS SECTION -->
 <section class="py-28 bg-surface">
     <div class="max-w-5xl mx-auto px-8">
@@ -1011,11 +1044,18 @@ function toggleFaq(btn) {
             </div>
             <div class="w-full md:w-auto">
                 <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Newsletter</h4>
-                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește tips & tricks săptămânale de AI video direct în inbox.</p>
-                <div class="flex gap-2">
-                    <input class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full md:w-64" placeholder="Email-ul tău" type="email">
-                    <button class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm">OK</button>
-                </div>
+                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește gratuit lecția „Prima ta imagine de produs cu AI”, plus tips & tricks de AI video direct în inbox.</p>
+                <form class="adv-ml-form md:w-80" data-sursa="footer" novalidate>
+                    <div class="flex gap-2">
+                        <input name="fields[email]" type="email" required autocomplete="email" class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full" placeholder="Email-ul tău">
+                        <button type="submit" class="bg-primary-fixed text-on-primary-fixed px-6 py-2 rounded-md font-bold text-sm disabled:opacity-60">OK</button>
+                    </div>
+                    <label class="flex items-start gap-2 mt-3 cursor-pointer">
+                        <input name="acord" type="checkbox" required class="mt-0.5 rounded border-outline-variant bg-surface-container-highest text-primary-fixed-dim focus:ring-primary-fixed">
+                        <span class="text-[#fbfffa]/40 text-xs leading-relaxed">Sunt de acord să primesc emailuri de la Academia de Video. Mă pot dezabona oricând.</span>
+                    </label>
+                    <p class="adv-ml-error hidden text-error text-xs mt-2" role="alert"></p>
+                </form>
             </div>
         </div>
         <div class="px-12 py-8 border-t border-[#3a4a43]/10 text-center md:text-left">
@@ -1493,5 +1533,74 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeVide
   }
 })();
 </script>
+<!-- ─── ABONARE EMAIL (MailerLite) ───
+     Completează cele două ID-uri din codul de embed al formularului MailerLite.
+     În codul de embed caută: action="https://assets.mailerlite.com/jsonp/ID_CONT/forms/ID_FORMULAR/subscribe" -->
+<script>
+var ML_ID_CONT = '2793654';
+var ML_ID_FORMULAR = '204047802624378233';
+
+(function () {
+    var configurat = /^\d+$/.test(ML_ID_CONT) && /^\d+$/.test(ML_ID_FORMULAR);
+
+    function eroare(form, mesaj) {
+        var p = form.querySelector('.adv-ml-error');
+        p.textContent = mesaj;
+        p.classList.toggle('hidden', !mesaj);
+    }
+
+    document.querySelectorAll('.adv-ml-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = form.querySelector('input[type=email]');
+            var acord = form.querySelector('input[name=acord]');
+            var btn = form.querySelector('button[type=submit]');
+            if (!email.value || !email.checkValidity()) { eroare(form, 'Scrie o adresă de email validă.'); email.focus(); return; }
+            if (!acord.checked) { eroare(form, 'Bifează acordul ca să îți putem trimite lecția.'); return; }
+            if (!configurat) { eroare(form, 'Formularul nu e încă activ. Scrie-ne pe WhatsApp și îți trimitem lecția.'); console.warn('MailerLite: completează ML_ID_CONT și ML_ID_FORMULAR.'); return; }
+            eroare(form, '');
+            btn.disabled = true;
+
+            // Trimitem către MailerLite într-un iframe ascuns, apoi ducem omul pe pagina de mulțumire.
+            var nume = 'ml-tinta-' + Date.now();
+            var iframe = document.createElement('iframe');
+            iframe.name = nume;
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+
+            var f = document.createElement('form');
+            f.method = 'POST';
+            f.target = nume;
+            f.action = 'https://assets.mailerlite.com/jsonp/' + ML_ID_CONT + '/forms/' + ML_ID_FORMULAR + '/subscribe';
+            var campuri = { 'fields[email]': email.value.trim(), 'ml-submit': '1', 'anticsrf': 'true' };
+            var numeInput = form.querySelector('input[name="fields[name]"]');
+            if (numeInput && numeInput.value.trim()) campuri['fields[name]'] = numeInput.value.trim();
+            Object.keys(campuri).forEach(function (k) {
+                var i = document.createElement('input');
+                i.type = 'hidden'; i.name = k; i.value = campuri[k];
+                f.appendChild(i);
+            });
+            document.body.appendChild(f);
+
+            var gata = false;
+            function mergiMaiDeparte() {
+                if (gata) return;
+                gata = true;
+                try { if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: form.dataset.sursa }); } catch (err) {}
+                try { if (window.ttq && ttq.track) ttq.track('SubmitForm', { content_name: form.dataset.sursa }); } catch (err) {}
+                setTimeout(function () { window.location.href = '/multumesc.html'; }, 400);
+            }
+            iframe.addEventListener('load', function () {
+                // Ignorăm încărcarea paginii goale inițiale; răspunsul MailerLite e pe alt domeniu și nu poate fi citit.
+                try { if (iframe.contentWindow.location.href === 'about:blank') return; } catch (err) {}
+                mergiMaiDeparte();
+            });
+            setTimeout(mergiMaiDeparte, 6000); // plasă de siguranță dacă iframe-ul nu raportează
+            f.submit();
+        });
+    });
+})();
+</script>
+
 </body>
 </html>
