@@ -751,30 +751,7 @@ window.ttq = window.ttq || { track: function(){}, page: function(){} };
     </div>
 </section>
 
-<script>
-// ─── LOCURI LA PREȚUL DE LANSARE ───
-// Actualizează manual numărul de mai jos pe măsură ce intră membri noi.
-// Când ajunge la 100, cardul trece singur pe prețul standard.
-var LOCURI_OCUPATE = 50;
-(function () {
-    var TOTAL = 100;
-    var ocupate = Math.max(0, Math.min(TOTAL, LOCURI_OCUPATE));
-    var ramase = TOTAL - ocupate;
-    var el = function (id) { return document.getElementById(id); };
-    if (ramase > 0) {
-        el('locuri-ramase').textContent = ramase;
-        el('locuri-bar').style.width = (ocupate / TOTAL * 100) + '%';
-    } else {
-        el('oferta-eyebrow').textContent = 'ABONAMENT';
-        el('oferta-titlu').innerHTML = 'Intră în comunitate și fă-ți <span class="text-primary-fixed-dim">prima reclamă cu AI.</span>';
-        el('oferta-banner').textContent = 'Acces complet la cursuri și comunitate';
-        el('pret-mare').textContent = '147 lei';
-        el('pret-nota').textContent = 'Aprox., TVA inclus · 32,67 $/lună la plată';
-        el('pret-anual').innerHTML = 'sau aprox. 1.470 lei/an — 2 luni gratis <span class="text-on-surface-variant text-sm font-normal">· 326,70 $/an la plată</span>';
-        el('locuri-box').style.display = 'none';
-    }
-})();
-</script>
+<script src="/oferta.js"></script>
 
 <!-- LEAD MAGNET: LECȚIE GRATUITĂ -->
 <section class="py-24 bg-surface-container-lowest relative overflow-hidden scroll-mt-28" id="lectie-gratuita">
@@ -788,7 +765,7 @@ var LOCURI_OCUPATE = 50;
                     Nu ești încă sigur? <span class="text-primary-fixed-dim">Încearcă întâi gratuit.</span>
                 </h2>
                 <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl mx-auto">
-                    Primești pe email lecția <span class="text-primary font-semibold">„Prima ta imagine de produs cu AI”</span>: pornești de la o poză făcută cu telefonul și ajungi la o imagine de studio, pas cu pas.
+                    Primești pe email lecția <span class="text-primary font-semibold">„Prima ta reclamă video cu AI, de la zero”</span>: creezi cu AI imaginea unui produs, doar dintr-o descriere, apoi o transformi într-o reclamă video. Fără cameră, pas cu pas.
                 </p>
             </div>
             <form class="adv-ml-form max-w-xl mx-auto" data-sursa="lectie_gratuita" novalidate>
@@ -1044,7 +1021,7 @@ function toggleFaq(btn) {
             </div>
             <div class="w-full md:w-auto">
                 <h4 class="text-sm font-headline font-bold text-primary uppercase tracking-widest mb-6">Newsletter</h4>
-                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește gratuit lecția „Prima ta imagine de produs cu AI”, plus tips & tricks de AI video direct în inbox.</p>
+                <p class="text-[#fbfffa]/40 text-sm mb-4">Primește gratuit lecția „Prima ta reclamă video cu AI, de la zero”, plus tips & tricks de AI video direct în inbox.</p>
                 <form class="adv-ml-form md:w-80" data-sursa="footer" novalidate>
                     <div class="flex gap-2">
                         <input name="fields[email]" type="email" required autocomplete="email" class="bg-surface-container-highest border-none rounded-md px-4 py-2 text-primary focus:ring-1 focus:ring-primary-fixed text-sm w-full" placeholder="Email-ul tău">
